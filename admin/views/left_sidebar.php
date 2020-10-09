@@ -17,7 +17,7 @@
             </div>
         </li>
         </li>
-        <li class="bold"><a href="table_category.php" class="waves-effect waves-cyan"><i class="mdi-communication-quick-contacts-dialer"></i>Contrataciones</a></li>
+        <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-communication-quick-contacts-dialer"></i>Contrataciones</a></li>
         <li class="bold"><a href="table_document.php" class="waves-effect waves-cyan"><i class="mdi-file-folder"></i>Documentos</a></li>
         <li class="bold"><a href="table_category.php" class="waves-effect waves-cyan"><i class="mdi-av-recent-actors"></i>Categorías</a></li>
     </ul>

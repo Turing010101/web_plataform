@@ -8,7 +8,7 @@ var app = new Vue({
   methods: {
     //BOTTONS
     btn_insert: async function () {
-      if (this.cmb_categoria == 0) {
+      if (true) {
           Swal.fire({
             type: "warning",
             title: "Advertencia",

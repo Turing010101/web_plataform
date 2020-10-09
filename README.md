@@ -1,2 +1,2 @@
-# web_plataform
+# Web Plataform
 Plataforma web de Trabajos.com

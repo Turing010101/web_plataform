@@ -9,7 +9,7 @@
                 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="#"><i class="mdi-action-home"></i> Perfil</a></li>
-                        <li><a href="#"><i class="mdi-action-settings-power"></i>Salir</a></li>
+                        <li><a href="../../"><i class="mdi-action-settings-power"></i>Salir</a></li>
                     </ul>
                     <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" data-activates="profile-dropdown">José Hdez<i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <p class="user-roal">Trabajador</p>

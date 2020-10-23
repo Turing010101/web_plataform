@@ -3,45 +3,45 @@ var app = new Vue({
   el: "#main",
   data: {
     id_registro:0,
-    registros: []
+    id_trabajador:1,
+    registros: [],
+    message_crud:'success',
+    message_img :'errimg'
   },
   methods: {
     //BOTTONS
     btn_insert: async function () {
-      if (true) {
-          Swal.fire({
-            type: "warning",
-            title: "Advertencia",
-            text: "¡No dejar datos incompletos!",
-            timer:1700
-          });
+      if (this.not_empty()) {
+        this.message("warning","Advertencia","¡No dejar datos incompletos!",1700);
       } else {
-        this.insert();
+       this.insert();
       }
     },
-    btn_select:async function(rows){
-      $('#mdl_upd_category').openModal();   
-      this.id_registro=rows.clave;   
+    btn_change_credencial:async function(){
+      let formData = new FormData(document.getElementById('frm_add_document'));
+      let object = document.getElementById('id_img_credencial');
+      var name = "img_credencial";
+      this.render_image(formData,object,name);
+    },
+    btn_change_certificado:async function(){
+      let formData = new FormData(document.getElementById('frm_add_document'));
+      let object = document.getElementById('id_img_certificado');
+      var name = "img_certificado";
+      this.render_image(formData,object,name);
+    },
+    btn_change_comprobante:async function(){
+      let formData = new FormData(document.getElementById('frm_add_document'));
+      let object = document.getElementById('id_img_comprobante');
+      var name = "img_comprobante";
+      this.render_image(formData,object,name);
     },
     btn_clear:async function(){
       this.empty();
     },
-    btn_update:async function(){                    
-      if (this.cmb_categoria == 0) {
-        Swal.fire({
-          type: "warning",
-          title: "Advertencia",
-          text: "¡No dejar datos incompletos!",
-          timer:1700
-        });
-      } else {
-        this.update();
-      }
-    },
-    btn_delete:function(id){    
+    btn_delete:function(obj){    
         Swal.fire({
           title: "Eliminar registro",
-          text: "¿Está seguro de borrar el registro: "+id+" ?",         
+          text: "¿Está seguro de borrar el registro: "+obj.clave+" ?",         
           type: "warning",
           cancelButtonColor:'#3085d6',
           confirmButtonColor:'#d33',
@@ -51,63 +51,53 @@ var app = new Vue({
           showDenyButton: true
         }).then((result) => {
           if (result.value) {            
-            this.delete(id);
+            this.delete(obj);
           }
         })                
     }, 
     //CRUD
     listar_registros: function () {
-      axios.post(url, { opcion: 4 }).then((response) => {
+      var formData = new FormData();
+      formData.append('opcion',4);
+      axios.post(url,formData).then((response) => {
         this.registros = response.data;
         this.restart();
       });
     },
     insert: function () {
-      axios.post(url, {opcion:1,clave_trabajador:this.id_trabajador,clave_categoria:this.cmb_categoria,opc_estado:this.cmb_estado}).then((response) => {
-        if(response.data.msj=='success'){
-          Swal.fire({
-            title: "Inserción",
-            type: "success",
-            text: "¡El registro ha sido guardado!",
-            timer:1400
-          });
+      var formData = new FormData(document.getElementById('frm_add_document'));
+      formData.append('opcion',1);
+      formData.append('clave_trabajador',this.id_trabajador);
+      axios.post(url,formData).then((response) => {
+        if(response.data.msj==this.message_crud){
+        this.message("success","Inserción","¡El registro ha sido guardado!",1400);
         this.listar_registros();
+        }else if(response.data.msj==this.message_img){
+        this.message("error","Formato","¡Seleccionar una imagen apropiado!",1400);
         }
       this.empty();
       });
     },
-    update: function () {
-      axios.post(url, {opcion:2,id:this.id_registro,clave_trabajador:this.id_trabajador,clave_categoria:this.cmb_categoria,opc_estado:this.cmb_estado}).then((response) => {
-        if(response.data.msj=='success'){
-          Swal.fire({
-            title: "Actualización",
-            type: "success",
-            text: "¡El registro ha sido actualizado!",
-            timer:1400
-          });
-          this.listar_registros();
-        }
-      this.empty();
-      });
-    },
-    delete: function (id) {
-      axios.post(url, { opcion: 3, id: id }).then((response) => {
-      if(response.data.msj=='success'){
-        Swal.fire({
-          title: "Eliminación",
-          type: "success",
-          text: "¡El registro ha sido eliminado!",
-          timer:1400
-        });
-        this.listar_registros();
+    delete: function (obj) {
+      var formData = new FormData();
+      formData.append('opcion',3);
+      formData.append('id_registro',obj.clave);
+      formData.append('img_credencial',obj.credencial);
+      formData.append('img_certificado',obj.certificado);
+      formData.append('img_comprobante',obj.comprobante_domicilio);
+
+      axios.post(url,formData).then((response) => {
+      if(response.data.msj==this.message_crud){
+      this.message("success","Eliminación","¡El registro ha sido eliminado!",1400);
+      this.listar_registros();
       }
       this.empty();
       });
     },
     restart() {
-      $("#tbl_categorias").DataTable().destroy();
+      $("#tbl_documents").DataTable().destroy();
       app.$nextTick(function () {
-        $("#tbl_categorias")
+        $("#tbl_documents")
           .DataTable({
             language: { url: "js/Spanish.json" },
             destroy: true,
@@ -116,14 +106,37 @@ var app = new Vue({
           .draw();
       });
     },
+    render_image(formData,object,name){
+      object.style.display='block';
+      const file = formData.get(name);
+      const image = URL.createObjectURL(file);
+      object.setAttribute('src', image);
+    },
     empty() {
       this.id_registro=0;
-      this.cmb_categoria=0;
-      this.cmb_estado='Solicitud';
+      document.getElementById('frm_add_document').reset();
+      document.getElementById('id_img_credencial').style.display='none';
+      document.getElementById('id_img_certificado').style.display='none';
+      document.getElementById('id_img_comprobante').style.display='none';
+    },
+    message(_type,_title,_text,_timer){
+      Swal.fire({
+        type: _type,
+        title: _title,
+        text: _text,
+        timer:_timer
+      });
+    },
+    not_empty(){
+      let formData = new FormData(document.getElementById('frm_add_document'));
+      if(formData.get('img_credencial').name=='' || formData.get('img_certificado').name=='' || formData.get('img_comprobante').name==''){
+        return true;
+      }else{
+        return false;
+      }
     }
   },
   created: function () {
     this.listar_registros();
-    this.listar_categorias();
   }
 });

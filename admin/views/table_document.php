@@ -56,7 +56,7 @@
           <div class="nav-wrapper">
             <h1 class="logo-wrapper"><a class="brand-logo darken-1"><img src="img/logo.png" alt="Trabajos.com"></a> <span class="logo-text">Trabajos.com</span></h1>
             <ul class="right hide-on-med-and-down">
-              <li><a href="#mdl_add_category" class="waves-effect waves-block waves-light modal-trigger">
+              <li><a href="#mdl_add_document" class="waves-effect waves-block waves-light modal-trigger">
                   <i class="mdi-content-add-circle-outline"></i></a>
               </li>
               <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
@@ -81,21 +81,22 @@
           <div class="container">
             <div class="section">
               <!--Modal add_category -->
-              <div id="mdl_add_category" class="modal">
+              <div id="mdl_add_document" class="modal">
                 <div class="modal-content">
-                  <form class="col s12" id="frm_add_category">
+                  <form id="frm_add_document" class="col s12">
                     <div class="row">
                       <div class="col s12">
                         <label>Credencial del elector</label>
                         <div class="row">
                           <div class="col s12 m8 l9">
                             <div class="file-field input-field">
-                              <input class="file-path validate" type="text" />
+                              <input class="file-path validate" type="text"/>
                               <div class="btn mdi-action-search">
-                                <input type="file" />
-                              </div>
+                                <input type="file" name="img_credencial" @change="btn_change_credencial"/>
+                              </div>                       
                             </div>
                           </div>
+                          <div class="col l3 m4"><img id="id_img_credencial" class="render_img"></div>
                         </div>
                       </div>
                     </div>
@@ -107,10 +108,11 @@
                             <div class="file-field input-field">
                               <input class="file-path validate" type="text" />
                               <div class="btn mdi-action-search">
-                                <input type="file" />
+                                <input type="file" name="img_certificado" @change="btn_change_certificado"/>
                               </div>
                             </div>
                           </div>
+                          <div class="col l3 m4"><img id="id_img_certificado" class="render_img"></div>
                         </div>
                       </div>
                     </div>
@@ -122,10 +124,11 @@
                             <div class="file-field input-field">
                               <input class="file-path validate" type="text" />
                               <div class="btn mdi-action-search">
-                                <input type="file" />
+                                <input type="file" name="img_comprobante" @change="btn_change_comprobante"/>
                               </div>
                             </div>
                           </div>
+                          <div class="col l3 m4"><img id="id_img_comprobante" class="render_img"></div>
                         </div>
                       </div>
                     </div>
@@ -136,17 +139,6 @@
                   <a @click="btn_clear" class="waves-effect waves-red btn-flat modal-action modal-close">Cancelar</a>
                 </div>
               </div>
-              <!--Modal add_category -->
-              <div id="mdl_upd_category" class="modal">
-                <div class="modal-content">
-                  <form class="col s12" id="frm_upd_category">
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <a @click="btn_update" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
-                  <a @click="btn_clear" class="waves-effect waves-red btn-flat modal-action modal-close">Cancelar</a>
-                </div>
-              </div>
             </div>
             <!--DataTables example Row grouping-->
             <div id="table-datatables">
@@ -154,7 +146,7 @@
                 <h4 class="header">Requisitos solicitados</h4>
                 <div class="divider"></div>
                 <div class="col s12 m8 l9">
-                  <table id="tbl_categorias" class="responsive-table display" cellspacing="0">
+                  <table id="tbl_documents" class="responsive-table display" cellspacing="0">
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -164,7 +156,6 @@
                         <th>Estado</th>
                         <th>Observaciones</th>
                         <th>Fecha de evaluación</th>
-                        <th>Editar</th>
                         <th>Eliminar</th>
                       </tr>
                     </thead>
@@ -177,7 +168,6 @@
                         <th>Estado</th>
                         <th>Observaciones</th>
                         <th>Fecha de evaluación</th>
-                        <th>Editar</th>
                         <th>Eliminar</th>
                       </tr>
                     </tfoot>
@@ -185,25 +175,24 @@
                       <tr v-for="(rows,i) of registros">
                         <td>{{rows.clave}}</td>
                         <td>
-                        <a class="example-image-link" :href="'img/document/'+rows.credencial" data-lightbox="example-1">
-                          <img :src="'img/document/'+rows.credencial" width="30" height="30" class="example-image" alt="Pendiente">
-                        </a>
+                          <a class="example-image-link" :href="'img/document/'+rows.credencial" data-lightbox="example-1">
+                            <img :src="'img/document/'+rows.credencial" width="30" height="30" class="example-image" alt="Pendiente">
+                          </a>
                         </td>
                         <td>
-                        <a class="example-image-link" :href="'img/document/'+rows.certificado" data-lightbox="example-1">
-                          <img :src="'img/document/'+rows.certificado" width="30" height="30" class="example-image" alt="Pendiente">
-                        </a>
+                          <a class="example-image-link" :href="'img/document/'+rows.certificado" data-lightbox="example-1">
+                            <img :src="'img/document/'+rows.certificado" width="30" height="30" class="example-image" alt="Pendiente">
+                          </a>
                         </td>
                         <td>
-                        <a class="example-image-link" :href="'img/document/'+rows.comprobante_domicilio" data-lightbox="example-1">
-                          <img :src="'img/document/'+rows.comprobante_domicilio" width="30" height="30" class="example-image" alt="Pendiente">
-                        </a>
+                          <a class="example-image-link" :href="'img/document/'+rows.comprobante_domicilio" data-lightbox="example-1">
+                            <img :src="'img/document/'+rows.comprobante_domicilio" width="30" height="30" class="example-image" alt="Pendiente">
+                          </a>
                         </td>
                         <td>{{rows.estado}}</td>
                         <td>{{rows.observacion}}</td>
                         <td>{{rows.fecha_evaluacion}}</td>
-                        <td><a @click="btn_select(rows)" class="btn-floating waves-effect waves-light blue"><i class="mdi-editor-mode-edit"></i></a></td>
-                        <td><a @click="btn_delete(rows.clave)" class="btn-floating waves-effect waves-light red darken-4"><i class="mdi-action-delete"></i></a></td>
+                        <td><a @click="btn_delete(rows)" class="btn-floating waves-effect waves-light red darken-4"><i class="mdi-action-delete"></i></a></td>
                       </tr>
                     </tbody>
                   </table>

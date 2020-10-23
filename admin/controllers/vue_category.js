@@ -10,7 +10,7 @@ var app = new Vue({
       { value: "Acreditado", text: "Acreditado" },
       { value: "Denegado", text: "Denegado" },
     ],
-    id_trabajador: 66,
+    id_trabajador: 1,
     cmb_categoria: 0,
     cmb_estado:'Solicitud'
   },

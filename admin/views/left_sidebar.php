@@ -21,7 +21,7 @@
         <li class="bold"><a href="table_document.php" class="waves-effect waves-cyan"><i class="mdi-file-folder"></i>Documentos</a></li>
         <li class="bold"><a href="table_category.php" class="waves-effect waves-cyan"><i class="mdi-av-recent-actors"></i>Categorías</a></li>
         <li class="bold"><a href="table_service.php" class="waves-effect waves-cyan"><i class="mdi-maps-local-grocery-store"></i>Servicios</a></li>
-        <li class="bold"><a href="table_service.php" class="waves-effect waves-cyan"><i class="mdi-image-image"></i>Imagenes</a></li>
+        <li class="bold"><a href="table_service_image.php" class="waves-effect waves-cyan"><i class="mdi-image-image"></i>Imagenes</a></li>
     </ul>
 </aside>
 <!-- END LEFT SIDEBAR NAV-->

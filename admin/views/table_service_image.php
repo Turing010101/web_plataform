@@ -129,6 +129,7 @@
                         <th>ID</th>
                         <th>Imagen</th>
                         <th>Servicio</th>
+                        <th>Categoría</th>
                         <th>Eliminar</th>
                       </tr>
                     </thead>
@@ -137,6 +138,7 @@
                         <th>ID</th>
                         <th>Imagen</th>
                         <th>Servicio</th>
+                        <th>Categoría</th>
                         <th>Eliminar</th>
                       </tr>
                     </tfoot>
@@ -149,6 +151,7 @@
                           </a>
                         </td>
                         <td>{{rows.nombre_servicio}}</td>
+                        <td>{{rows.nombre_categoria}}</td>
                         <td><a @click="btn_delete(rows)" class="btn-floating waves-effect waves-light red darken-4"><i class="mdi-action-delete"></i></a></td>
                       </tr>
                     </tbody>

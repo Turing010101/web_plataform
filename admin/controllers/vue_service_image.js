@@ -37,7 +37,7 @@ var app = new Vue({
     btn_delete:function(obj){    
         Swal.fire({
           title: "Eliminar registro",
-          text: "¿Está seguro de borrar el registro: "+obj.clave+" ?",         
+          text: "¿Está seguro de borrar el registro: "+obj.id_clave_servicio_imagen+" ?",         
           type: "warning",
           cancelButtonColor:'#3085d6',
           confirmButtonColor:'#d33',

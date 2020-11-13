@@ -234,7 +234,12 @@ var app = new Vue({
     },
     not_empty() {
       let formData = new FormData(document.getElementById("frm_perfil"));
-      if (formData.get("txt_rfc") == "") {
+      if(formData.get("txt_rfc") == "" || formData.get("txt_nombre")=="" || formData.get("txt_ap_paterno")==""
+      || formData.get("txt_ap_materno")=="" || formData.get("cmb_sexo")==null || formData.get("txt_tel_personal")==""
+      || formData.get("txt_tel_conocido")=="" || formData.get("txt_localidad")=="" || formData.get("txt_nombre_calle")==""
+      || formData.get("txt_numero_calle")=="" || formData.get("txt_municipio")=="" || formData.get("txt_estado")==""
+      || formData.get("txt_cp")=="" || formData.get("txt_email")=="" || formData.get("txt_usuario")=="" || formData.get("txt_pswd")=="") 
+      {
         return true;
       } else {
         return false;

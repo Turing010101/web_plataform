@@ -4,24 +4,24 @@
         <li class="user-details cyan darken-2">
             <div class="row">
                 <div class="col col s4 m4 l4">
-                    <img src="img/user.jpg" alt="" class="circle responsive-img valign profile-image">
+                    <img id="foto" alt="" class="circle responsive-img valign profile-image">
                 </div>
                 <div class="col col s8 m8 l8">
                     <ul id="profile-dropdown" class="dropdown-content">
-                        <li><a href="#"><i class="mdi-action-home"></i> Perfil</a></li>
-                        <li><a href="../../"><i class="mdi-action-settings-power"></i>Salir</a></li>
+                        <li><a id="cuenta"><i class="mdi-action-home"></i> Perfil</a></li>
+                        <li><a id="cerrar"><i class="mdi-action-settings-power"></i>Salir</a></li>
                     </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" data-activates="profile-dropdown">José Hdez<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                    <p class="user-roal">Trabajador</p>
+                    <a id="usuario" class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" data-activates="profile-dropdown"><i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p id="tipo" class="user-roal"></p>
                 </div>
             </div>
         </li>
         </li>
-        <li class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-communication-quick-contacts-dialer"></i>Contrataciones</a></li>
-        <li class="bold"><a href="table_document.php" class="waves-effect waves-cyan"><i class="mdi-file-folder"></i>Documentos</a></li>
-        <li class="bold"><a href="table_category.php" class="waves-effect waves-cyan"><i class="mdi-av-recent-actors"></i>Categorías</a></li>
-        <li class="bold"><a href="table_service.php" class="waves-effect waves-cyan"><i class="mdi-maps-local-grocery-store"></i>Servicios</a></li>
-        <li class="bold"><a href="table_service_image.php" class="waves-effect waves-cyan"><i class="mdi-image-image"></i>Imagenes</a></li>
+        <li id="contratacion" style="display:none" class="bold"><a href="#" class="waves-effect waves-cyan"><i class="mdi-communication-quick-contacts-dialer"></i>Contrataciones</a></li>
+        <li id="documentos"  style="display:none" class="bold"><a href="table_document.php" class="waves-effect waves-cyan"><i class="mdi-file-folder"></i>Documentos</a></li>
+        <li id="categorias" style="display:none" class="bold"><a href="table_category.php" class="waves-effect waves-cyan"><i class="mdi-av-recent-actors"></i>Categorías</a></li>
+        <li id="servicios" style="display:none" class="bold"><a href="table_service.php" class="waves-effect waves-cyan"><i class="mdi-maps-local-grocery-store"></i>Servicios</a></li>
+        <li id="imagenes" style="display:none" class="bold"><a href="table_service_image.php" class="waves-effect waves-cyan"><i class="mdi-image-image"></i>Imagenes</a></li>
     </ul>
 </aside>
 <!-- END LEFT SIDEBAR NAV-->

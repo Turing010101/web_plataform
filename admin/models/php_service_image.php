@@ -2,11 +2,13 @@
 include_once 'connection.php';
 $objeto = new conexion();
 $conexion = $objeto->conectar();
+session_start();
 $status=false;
 $extension_image = array("png","jpeg","jpg");
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
-      
+$id_trabajador =  $_SESSION['id_worker'];
+       
 switch ($opcion) {
     case 1:
         $foto_servicio = $_FILES["img_servicio"];
@@ -56,17 +58,15 @@ switch ($opcion) {
         unlink('../views/img/service/'.$servicio);
         break;         
     case 4:
-        $clave = (isset($_POST['clave_trabajador'])) ? $_POST['clave_trabajador'] : '';
             
-        $consulta = "CALL sp_read_service_worker('$clave')";
+        $consulta = "CALL sp_read_service_worker('$id_trabajador')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 5:
-        $clave = (isset($_POST['clave_trabajador'])) ? $_POST['clave_trabajador'] : '';
                 
-        $consulta = "CALL sp_read_service_image('$clave')";
+        $consulta = "CALL sp_read_service_image('$id_trabajador')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

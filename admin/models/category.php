@@ -2,12 +2,12 @@
 include_once 'connection.php';
 $objeto = new conexion();
 $conexion = $objeto->conectar();
-
+session_start();
 $_POST = json_decode(file_get_contents("php://input"), true);
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
-$id_trabajador = (isset($_POST['clave_trabajador'])) ? $_POST['clave_trabajador'] : '';
+$id_trabajador = $_SESSION['id_worker'];
 $id_categoria = (isset($_POST['clave_categoria'])) ? $_POST['clave_categoria'] : '';
 $estado = (isset($_POST['opc_estado'])) ? $_POST['opc_estado'] : '';
 
@@ -31,7 +31,7 @@ switch($opcion){
         $data = ($resultado->rowCount()==1) ? array("msj"=>"success") : array("msj"=>"error");
         break;         
     case 4:
-        $consulta = "CALL sp_read_assing_category()";
+        $consulta = "CALL sp_read_assing_category_web('$id_trabajador')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

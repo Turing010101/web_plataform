@@ -29,7 +29,7 @@ var app = new Vue({
       this.render_image(formData,object,name);
     },
     btn_modal_tbl:async function(){
-     popup_service=window.open("table_service_popup.php?id="+this.id_trabajador+"","tbl_servicios","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
+     popup_service=window.open("table_service_popup.php","tbl_servicios","menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
     },
     btn_clear:async function(){
       this.empty();

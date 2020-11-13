@@ -2,11 +2,13 @@
 include_once 'connection.php';
 $objeto = new conexion();
 $conexion = $objeto->conectar();
+session_start();
 $status=false;
 $extension_image = array("png","jpeg","jpg");
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
-      
+$id_trabajador = $_SESSION['id_worker'];
+
 switch ($opcion) {
     case 1:
 
@@ -25,8 +27,6 @@ switch ($opcion) {
         $extension_credencial = pathinfo($filename_credencial, PATHINFO_EXTENSION);
         $extension_certificado = pathinfo($filename_certificado, PATHINFO_EXTENSION);
         $extension_comprobante = pathinfo($filename_comprobante, PATHINFO_EXTENSION);
-
-        $id_trabajador = (isset($_POST['clave_trabajador'])) ? $_POST['clave_trabajador'] : '';
         
         if ((in_array($extension_credencial,$extension_image)) && (in_array($extension_certificado,$extension_image)) && (in_array($extension_comprobante,$extension_image))) {
             $status = true;
@@ -78,7 +78,7 @@ switch ($opcion) {
         unlink('../views/img/document/'.$comprobante);
         break;         
     case 4:
-        $consulta = "CALL sp_read_document_from_wroker()";
+        $consulta = "CALL sp_read_document_from_wroker_web('$id_trabajador')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

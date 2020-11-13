@@ -2,9 +2,11 @@
 include_once 'connection.php';
 $objeto = new conexion();
 $conexion = $objeto->conectar();
+session_start();
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
-      
+$id_trabajador =  $_SESSION['id_worker'];
+
 switch ($opcion) {
     case 1:
         $nombre = (isset($_POST['txt_nombre'])) ? $_POST['txt_nombre'] : '';
@@ -38,17 +40,14 @@ switch ($opcion) {
         $data = ($resultado->rowCount()==1) ? array("msj"=>"success") : array("msj"=>"error");
         break;         
     case 4:
-        $clave = (isset($_POST['clave_trabajador'])) ? $_POST['clave_trabajador'] : '';
-        
-        $consulta = "CALL sp_read_service_worker('$clave')";
+        $consulta = "CALL sp_read_service_worker('$id_trabajador')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 5:
-        $clave = (isset($_POST['clave_trabajador'])) ? $_POST['clave_trabajador'] : '';
-            
-        $consulta = "CALL sp_read_assing_category_worker('$clave')";
+        
+        $consulta = "CALL sp_read_assing_category_worker('$id_trabajador')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Contacto</title>
+  <title>Cuenta</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -25,7 +25,6 @@
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/js/sweetalert/css/sweetalert2.min.css" rel="stylesheet" >
-
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
@@ -53,41 +52,31 @@
           <div class="col-lg-4 mt-5 mt-lg-0">
             <div class="text-center"><img src="assets/img/logo.png" height="90"></div>
             <div class="text-center mt-3">
-              <h6 class="font-weight-bold">Iniciar sesión en Trabajos.com</h6>
+              <h6 class="font-weight-bold">Crea tu cuenta en Trabajos.com</h6>
             </div>
-            <form id="frm_login" role="form" class="php-email-form mt-4">
+            <form id="frm_add_account" role="form" class="php-email-form mt-4">
               <div class="form-row">
                 <div class="col-md-12 form-group">
-                  <select class="form-control" name="cmb_tipo" v-model="tipo_usuario">
-                    <option value="0" disabled selected>Elegir</option>
-                    <option value="3">Contratante</option>
-                    <option value="4">Trabajador</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="col-md-12 form-group">
-                  <input type="text" name="txt_user" v-model="usuario" class="form-control" id="user" placeholder="Usuario" />
+                  <input type="text" name="txt_user" class="form-control" id="user" v-model="usuario" placeholder="Nombre de usuario" />
                   <div class="validate"></div>
                 </div>
               </div>
-              <div class="text-right">
-                <a href="#"><small>¿Se te olvidó tu contraseña?</small></a>
-              </div>
               <div class="form-row">
                 <div class="col-md-12 form-group">
-                  <input type="password" class="form-control" name="txt_pswd" v-model="contrasena" id="pswd" placeholder="Contraseña" />
+                  <input type="text" name="txt_email" class="form-control" id="email" v-model="correo" placeholder="Correo electrónico" />
                   <div class="validate"></div>
                 </div>
               </div>
-              <div class="text-center"><a @click="btn_ok" href="#" class="get-started-btn">Registrarse</a></div>
+              <div class="form-row">
+                <div class="col-md-12 form-group">
+                  <input type="password" name="txt_pswd" class="form-control" id="pswd" v-model="contrasena" placeholder="Contraseña" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="text-center"><a @click="btn_ok" class="get-started-btn">Crear cuenta</a></div>
             </form>
-            <div class="text-center mt-4"><small class="font-weight-bold">¿Nuevo en Trabajos.com? </small><a href="view_account.php"><small>Crea una cuenta.</small></a>
-            </div>
           </div>
-
         </div>
-
       </div>
     </section><!-- End Contact Section -->
 
@@ -103,7 +92,7 @@
   <script src="assets/js/vue/vue.js"></script>
   <script src="assets/js/vue/axios.js"></script>
   <script src="assets/js/sweetalert/sweetalert2.all.min.js"></script>
-  <script src="../controllers/vue_login.js"></script>
+  <script src="../controllers/vue_account.js"></script>
 
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

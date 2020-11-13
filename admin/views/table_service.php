@@ -212,6 +212,7 @@
   <script type="text/javascript" src="js/lightbox/lightbox-plus-jquery.min.js"></script>
 
   <script type="text/javascript" src="../controllers/validation.js"></script>
+  <script type="text/javascript" src="../controllers/vue_perfil.js"></script>
   <script type="text/javascript" src="../controllers/vue_service.js"></script>
 
   <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>

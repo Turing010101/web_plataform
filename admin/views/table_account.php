@@ -164,7 +164,7 @@
                           <label>Usuario</label>
                         </div>
                         <div class="input-field col s3">
-                          <input placeholder=".." type="text" name="txt_pswd" v-model="pswd">
+                          <input placeholder=".." type="password" name="txt_pswd" v-model="pswd">
                           <label>Contraseña</label>
                         </div>
                       </div>
@@ -197,7 +197,7 @@
                       </div>
                       <div class="input-field col s12">
                         <div class="input-field col s12 center-align">
-                          <button @click="btn_trabajador" class="btn cyan waves-effect waves-light" type="button"><i class="mdi-action-perm-identity"></i> Register</button>
+                          <button @click="btn_trabajador" class="btn cyan waves-effect waves-light" type="button"><i class="mdi-action-perm-identity"></i> Registrar</button>
                         </div>
                       </div>
                     </div>

@@ -9,11 +9,6 @@ var app = new Vue({
       { value: "M", text: "Mujer" },
       { value: "H", text: "Hombre" },
     ],
-    tipos_usuarios: [
-      { value: "1", text: "Contratante" },
-      { value: "2", text: "Trabajador" },
-    ],
-    tipo_usuario: "0",
     sexo: "X",
     nombre_img: "",
     rfc: "",
@@ -71,7 +66,6 @@ var app = new Vue({
       formData.append("opcion", 2);
       formData.append("correo", this.email);
       axios.post(url, formData).then((response) => {
-        console.log(response.data);
         this.registros = response.data;
         this.setValues();
       });
@@ -210,19 +204,13 @@ var app = new Vue({
     
             axios.post(url, formData).then((response) => {
               if (response.data.msj == this.message_crud) {
-                this.message(
-                  "success",
-                  "Tipo de perfil",
-                  "¡Tu perfil de trabajador ha sido registrada!",
-                  1700
-                );
                 window.location.href = "table_account.php?email=" + app.email;
               } else if (response.data.msj == this.message_read) {
                 this.message(
                   "success",
                   "Tipo de perfil",
-                  "¡Ya cuenta con este perfil!",
-                  1700
+                  "¡Ya cuenta con este perfil, puede iniciar sesión con ello!",
+                  2000
                 );
               }
             });        

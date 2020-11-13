@@ -22,10 +22,8 @@ var app = new Vue({
       formData.append('opcion',1);
 
       axios.post(url,formData).then((response) => {
-        console.log("fff: "+response.data);
 
         if(response.data.msj==this.message_crud){
-        this.message("success","Inserción","¡El registro ha sido guardado!",1400);
         window.location.href="../../admin/views/table_account.php?email="+ app.correo;          
         }
         this.empty();

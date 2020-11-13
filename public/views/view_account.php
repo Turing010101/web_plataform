@@ -73,7 +73,7 @@
                   <div class="validate"></div>
                 </div>
               </div>
-              <div class="text-center"><a @click="btn_ok" class="get-started-btn">Crear cuenta</a></div>
+              <div class="text-center"><a @click="btn_ok" href="#" class="get-started-btn">Crear cuenta</a></div>
             </form>
           </div>
         </div>

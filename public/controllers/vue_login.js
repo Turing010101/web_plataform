@@ -22,7 +22,6 @@ var app = new Vue({
       formData.append('opcion',1);
 
       axios.post(url,formData).then((response) => {
-        console.log(response.data);
         if(this.msg==response.data[0]["res"]){
         window.location.href="../../admin/views/table_account.php?email="+response.data[0]["email"];    
         }else{

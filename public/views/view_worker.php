@@ -48,62 +48,16 @@
     <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+
+          <div v-for="(rows,i) of trabajadores" class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="member">
-            <a href="view_service.php"><img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt=""></a>
+            <a @click="select(rows)"><img :src="'../../admin/views/img/users/'+rows.img_trabajador" width="50%" class="img-fluid" alt=""></a>
               <div class="member-content">
-                <h4>José Hernández Hernández</h4>
-                <span>Carpintero</span>
-                <p>
-                Cuento con mas de 5 años de experiencia.
-                </p>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>              
+                <span>{{rows.trabajador}}</span>           
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-            <a href="view_service.php"><img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt=""></a>
-              <div class="member-content">
-                <h4>Roberto Juarez Hernández</h4>
-                <span>Albañil</span>
-                <p>
-                Cuento con mas de 7 años de experiencia.
-                </p>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-            <a href="view_service.php"><img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt=""></a>
-              <div class="member-content">
-                <h4>Eusebio Ramirez Hernández</h4>
-                <span>Herrero</span>
-                <p>
-                Cuento con mas de 12 años de experiencia.
-                </p>
-                <div class="social">
-                  <a href=""><i class="icofont-twitter"></i></a>
-                  <a href=""><i class="icofont-facebook"></i></a>
-                  <a href=""><i class="icofont-instagram"></i></a>
-                  <a href=""><i class="icofont-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section><!-- End Trainers Section -->
@@ -118,6 +72,10 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="assets/js/vue/vue.js"></script>
+  <script src="assets/js/vue/axios.js"></script>
+  <script src="../controllers/vue_worker.js"></script>
+
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>

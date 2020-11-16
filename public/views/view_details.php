@@ -49,29 +49,30 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-8">
-            <img src="assets/img/course-details.jpg" class="img-fluid" alt="">
+          <div class="col-lg-6">
+            <img :src="'../../admin/views/img/service/'+img_servicio" class="img-fluid" alt="">
             <h3>Descripción</h3>
             <p>
-            Cuenta con cuatro cajones amplios y jaladeras de resistente material con acabado plateado. Un mueble fabricado con madera industrial y aglomerado, a fin de garantizarte aguante y durabilidad, mientras que su cubierta sobre foil, le da una excelente protección.
+            {{detalle}}
             </p>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-6">
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Servicio</h5>
-              <p>Cajonera</p>
+              <p>{{servicio}}</p>
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Precio</h5>
-              <p>$2,099</p>
+              <p>${{precio}}</p>
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Categoría</h5>
-              <p>Carpinteria</p>
+              <p>{{categoria}}</p>
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Trabajador</h5>
-              <p>José Hernández</p>
+              <img :src="'../../admin/views/img/users/'+img_trabajador" class="img-fluid" width="15%">
+              <p>{{trabajador}}</p>
             </div>
             <div class="text-center">
               <a href="#" class="get-started-btn">Contratar</a>
@@ -91,6 +92,10 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="assets/js/vue/vue.js"></script>
+  <script src="assets/js/vue/axios.js"></script>
+  <script src="../controllers/vue_detail.js"></script>
+
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>

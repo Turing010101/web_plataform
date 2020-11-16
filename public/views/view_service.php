@@ -39,7 +39,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" style="margin-top: 89px;" data-aos="fade-in">
       <div class="container">
-        <h2>Mis servicios de carpintería</h2>
+        <h2>Servicios De {{nombre_categoria}}</h2>
        </div>
     </div><!-- End Breadcrumbs -->
 
@@ -47,18 +47,19 @@
     <section id="courses" class="courses">
       <div class="container" data-aos="fade-up">
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+
+          <div v-for="(rows,i) of servicios" class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="assets/img/cajonera.jpg" class="img-fluid" alt="...">
+              <img :src="'../../admin/views/img/service/'+rows.img_servicio" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="price">$2,099</p>
+                  <p class="price">$ {{rows.servicio_costo}}</p>
                 </div>
-                <h3><a href="view_details.php">Cajonera</a></h3>
+                <h3><a @click="select(rows)">{{rows.servicio_nombre}}</a></h3>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Jose Hernández</span>
+                    <img :src="'../../admin/views/img/users/'+rows.img_trabajador" class="img-fluid" alt="">
+                    <span>{{rows.nombre_trabajador}}</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
                     <i class="bx bx-user"></i>&nbsp;50
@@ -69,50 +70,7 @@
               </div>
             </div>
           </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="assets/img/silla.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="price">$169</p>
-                </div>
-                <h3><a href="view_details.php">Silla restaurantero</a></h3>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Jose Hernández</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="course-item">
-              <img src="assets/img/base_cama.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="price">$1,400</p>
-                </div>
-                <h3><a href="view_details.php">Base para Colchón</a></h3>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-                    <span>Jose Hernández</span>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
+
         </div>
       </div>
     </section><!-- End Courses Section -->
@@ -127,6 +85,10 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="assets/js/vue/vue.js"></script>
+  <script src="assets/js/vue/axios.js"></script>
+  <script src="../controllers/vue_service.js"></script>
+
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>

@@ -7,12 +7,12 @@
         <ul>
           <li class="active"><a href="view_home.php">Inicio</a></li>
           <li><a href="view_job.php">Oficios</a></li>
-          <li class="drop-down"><a href="view_worker.php">Trabajadores</a>
+          <li class="drop-down"><a href="view_worker.php?cat=1">Trabajadores</a>
             <ul>
-              <li><a href="view_worker.php">Carpinteros</a></li>
-              <li><a href="view_worker.php">Arbañiles</a></li>
-              <li><a href="view_worker.php">Herreros</a></li>
-              <li><a href="view_worker.php">Electricistas</a></li>
+              <li><a href="view_worker.php?cat=1">Carpinteros</a></li>
+              <li><a href="view_worker.php?cat=2">Arbañiles</a></li>
+              <li><a href="view_worker.php?cat=3">Herreros</a></li>
+              <li><a href="view_worker.php?cat=4">Plomeros</a></li>
             </ul>
           </li>
           <li><a href="view_location.php">Ubicación</a></li>

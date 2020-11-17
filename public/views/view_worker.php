@@ -40,7 +40,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" style="margin-top: 89px;" data-aos="fade-in">
       <div class="container">
-        <h2>Contamos con trabajadres capacitados</h2>
+        <h2>Trabajadores capacitados en {{categoria}}</h2>
         </div>
     </div><!-- End Breadcrumbs -->
 

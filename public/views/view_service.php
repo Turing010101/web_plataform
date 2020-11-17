@@ -39,7 +39,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" style="margin-top: 89px;" data-aos="fade-in">
       <div class="container">
-        <h2>Servicios De {{nombre_categoria}}</h2>
+        <h2>Servicios de {{nombre_categoria}}</h2>
        </div>
     </div><!-- End Breadcrumbs -->
 

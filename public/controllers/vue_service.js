@@ -14,7 +14,7 @@ var app = new Vue({
 
       axios.post(url, { opcion: 1,id_cat: this.id_categoria, id_tbj: this.id_trabajador }).then((response) => {
         this.servicios = response.data;
-        this.nombre_categoria = response.data[0].categoria;
+        this.nombre_categoria = (response.data[0].categoria).toLowerCase();
       });
     },
     select:async function(rows){

@@ -4,6 +4,7 @@ var app = new Vue({
   data: {
     trabajadores: [],
     id_categoria:0,
+    categoria:''
   },
   methods: {
     listar_trabajadores: function () {
@@ -11,6 +12,7 @@ var app = new Vue({
 
       axios.post(url, { opcion: 1,id_cat: this.id_categoria }).then((response) => {
         this.trabajadores = response.data;
+        this.categoria = (response.data[0].categoria).toLowerCase();
       });
     },
     select:async function(rows){

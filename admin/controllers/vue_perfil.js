@@ -10,9 +10,10 @@ var app = new Vue({
         document.getElementById('foto').src = "./img/users/"+response.data[0]['foto'];
         document.getElementById('usuario').innerHTML= response.data[0]['usuario'];
         document.getElementById('tipo').innerHTML= response.data[0]['tipo'];
-        
-        document.getElementById('cerrar').setAttribute('href',"../models/php_cerrar_session.php");
+        document.getElementById('inicio').setAttribute('target',"_blank");
+        document.getElementById('inicio').setAttribute('href',"../../");
         document.getElementById('cuenta').setAttribute('href',"table_account.php?email="+response.data[0]['email']);
+        document.getElementById('cerrar').setAttribute('href',"../models/php_cerrar_session.php");
       });
     },
     permisos: function () {

@@ -73,6 +73,7 @@ switch ($opcion) {
             $row=$res->fetchAll(PDO::FETCH_ASSOC);
 
             $_SESSION['id_client']=$row[0]['id_cliente'];
+            $_SESSION['id_contract'] = 0;
          }
 
         break;               

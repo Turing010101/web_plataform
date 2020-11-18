@@ -26,8 +26,22 @@ var app = new Vue({
         this.detalle = response.data[0].servicio_descripcion;
       });
     },
-    select:async function(rows){
-      window.location.href="view_details.php?svc="+rows.clave_servicio;  
+    contratar:async function(){
+
+      axios.post(url, { opcion: 2, id_svc:this.id_servicio,id_price: this.precio }).then((response) => {
+        console.log(response.data);
+        if(response.data.msj=='true'){
+          Swal.fire({
+            title: "Añadido",
+            type: "success",
+            text: "¡El servicio ha sido guardado a tu contrato!",
+            timer:1700
+          });  
+        }else{
+         window.location.href="view_contact.php";  
+        }
+
+      });
     },
     get_variable_url(variable) {
       let query = window.location.search.substring(1);

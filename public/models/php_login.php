@@ -29,7 +29,8 @@ switch ($opcion) {
             $_SESSION['pswd']= $contrasena;
             $_SESSION['rfc'] = $data[0]['rfc'];
             if($_SESSION['type']==3){
-            $_SESSION['id_client']= $data[0]['id_cliente'];
+            $_SESSION['id_client'] = $data[0]['id_cliente'];
+            $_SESSION['id_contract'] = 0;
             }else{
              $_SESSION['id_worker']= $data[0]['id_trabajador'];
             }

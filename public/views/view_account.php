@@ -63,7 +63,7 @@
               </div>
               <div class="form-row">
                 <div class="col-md-12 form-group">
-                  <input type="text" name="txt_email" class="form-control" id="email" v-model="correo" placeholder="Correo electrónico" />
+                  <input type="email" name="txt_email" class="form-control" id="email" v-model="correo" placeholder="Correo electrónico" />
                   <div class="validate"></div>
                 </div>
               </div>

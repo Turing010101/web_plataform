@@ -56,7 +56,7 @@
           <div class="nav-wrapper">
             <h1 class="logo-wrapper"><a class="brand-logo darken-1"><img src="img/logo.png" alt="Trabajos.com"></a> <span class="logo-text">Trabajos.com</span></h1>
             <ul class="right hide-on-med-and-down">
-              <li><a href="#mdl_add_category" class="waves-effect waves-block waves-light modal-trigger">
+              <li><a @click="btn_open_add" class="waves-effect waves-block waves-light modal-trigger">
                   <i class="mdi-content-add-circle-outline"></i></a>
               </li>
               <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
@@ -96,7 +96,7 @@
                         <label>Estado</label>
                         <select v-model="cmb_estado" class="browser-default">
                           <option value="0" disabled selected>Elegir</option>
-                          <option v-for="row in estados" v-bind:value="row.value">{{ row.text }}</option>
+                          <option value="Solicitud">Solicitud</option>
                         </select>
                       </div>
                     </div>
@@ -121,7 +121,7 @@
                       </div>
                       <div class="col s6">
                         <label>Estado</label>
-                        <select v-model="cmb_estado" class="browser-default">
+                        <select v-model="cmb_estado" class="browser-default" disabled>
                           <option value="0" disabled selected>Elegir</option>
                           <option v-for="row in estados" v-bind:value="row.value">{{ row.text }}</option>
                         </select>
@@ -166,7 +166,7 @@
                         <td>{{rows.categoria}}</td>
                         <td>{{rows.estado}}</td>
                         <td><a @click="btn_select(rows)" class="btn-floating waves-effect waves-light blue"><i class="mdi-editor-mode-edit"></i></a></td>
-                        <td><a @click="btn_delete(rows.clave)" class="btn-floating waves-effect waves-light red darken-4"><i class="mdi-action-delete"></i></a></td>
+                        <td><a @click="btn_delete(rows)" class="btn-floating waves-effect waves-light red darken-4"><i class="mdi-action-delete"></i></a></td>
                       </tr>
                     </tbody>
                   </table>

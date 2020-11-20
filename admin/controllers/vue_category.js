@@ -1,6 +1,6 @@
 var url = "../models/category.php";
 var app = new Vue({
-  el: "#main",
+  el: "#content",
   data: {
     id_registro:0,
     registros: [],
@@ -16,8 +16,13 @@ var app = new Vue({
   },
   methods: {
     //BOTTONS
+    btn_open_add: async function () {
+      this.cmb_categoria = 0;
+      this.cmb_estado = 'Solicitud';
+      $('#mdl_add_category').openModal();   
+    },
     btn_insert: async function () {
-      if (this.cmb_categoria == 0) {
+      if (this.cmb_categoria == 0 || this.cmb_estado != 'Solicitud') {
           Swal.fire({
             type: "warning",
             title: "Advertencia",
@@ -29,10 +34,19 @@ var app = new Vue({
       }
     },
     btn_select:async function(rows){
+      if(rows.estado=='Solicitud'){
       $('#mdl_upd_category').openModal();   
       this.id_registro=rows.clave;   
       this.cmb_estado=rows.estado;
       this.cmb_categoria=rows.id_categoria;
+      }else{
+        Swal.fire({
+          type: "warning",
+          title: "Advertencia",
+          text: "¡Ya no puede modificar!",
+          timer:1700
+        });
+      }
     },
     btn_clear:async function(){
       this.empty();
@@ -49,10 +63,11 @@ var app = new Vue({
         this.update();
       }
     },
-    btn_delete:function(id){    
+    btn_delete:function(row){   
+      if(row.estado=='Solicitud'){ 
         Swal.fire({
           title: "Eliminar registro",
-          text: "¿Está seguro de borrar el registro: "+id+" ?",         
+          text: "¿Está seguro de borrar el registro: "+row.clave+" ?",         
           type: "warning",
           cancelButtonColor:'#3085d6',
           confirmButtonColor:'#d33',
@@ -62,9 +77,17 @@ var app = new Vue({
           showDenyButton: true
         }).then((result) => {
           if (result.value) {            
-            this.delete(id);
+            this.delete(row.clave);
           }
-        })                
+        })         
+      }else{
+        Swal.fire({
+          type: "warning",
+          title: "Advertencia",
+          text: "¡Ya no puede eliminar!",
+          timer:1700
+        });
+      }       
     }, 
     //CRUD
     listar_registros: function () {

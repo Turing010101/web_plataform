@@ -32,22 +32,34 @@ $resultado->execute();
 
 $thml='
 
-<div class="text-left"> 
-<img src="img/logotipo.png" width="100" height="100">
-<h4 class="text-left">CONTRATO #'.$id_contrato.'</h4>
-<h5 class="text-left">Cliente: '.$nombre_cliente.' </h5>
-<h5 class="text-left">RFC: '.$rfc_cliente.' </h5>
-<div>
-    <h6 class="text-right">Trabajos.com</h6>
-    <h6 class="text-right">Calle De La Revolución Mexicana</h6>
-    <h6 class="text-right">Huejutla Hidalgo, C.P 43000</h6>
-    <h6 class="text-right">trabajos.com@gmail.com</h6>
-    <h6 class="text-right">5589 5548 55</h6>
+<div class="row" style="border-bottom: 2px solid #f5f5f5; padding-bottom: 3px;">
+    <div style="float: left; width: 50%; padding-left: 12px; padding-top: -10px;">
+        <img src="img/logotipo.png" width="90" height="90">
+    </div>
+    <div style="float: right; padding-right: 14px;">
+        <div>
+            <h6 class="text-right" style="padding: 0px; margin: 0px;">TRABAJOS.COM</h6>
+            <h6 class="text-right" style="padding: 0px; margin: 0px;">EMPRESA DE SERVICIOS S.A DE C.V</h6>
+            <h6 class="text-right" style="padding: 0px; margin: 0px;">Calle De La Revolución Mexicana</h6>
+            <h6 class="text-right" style="padding: 0px; margin: 0px;">Huejutla Hidalgo, C.P 43000</h6>
+            <h6 class="text-right" style="padding: 0px; margin: 0px;">trabajos.com@gmail.com</h6>
+            <h6 class="text-right" style="padding: 0px; margin: 0px; margin-bottom: 12px;">5589 5548 55</h6>
+        </div>
+    </div>
 </div>
-<h6 class="text-right">Fecha de contrato: '.$fecha_contrato.'</h6>
-<h6 class="text-right">Modo de pago: '.$modo_pago.'</h6>
-<h2 class="text-right">TOTAL $'.$total.'</h2>
-<h4 class="text-right">'.$estado.'</h4>
+
+<div style="margin-top: 12px;">
+    <div style="width: 50%; float: left;">
+        <h4 class="text-left" style="margin: 0px; padding-bottom: 20px;">CONTRATO #'.$id_contrato.'</h4>
+        <h5 class="text-left" style="margin: 0px; font-weight: bold;">Cliente: '.$nombre_cliente.' </h5>
+        <h5 class="text-left" style="margin: 0px; font-weight: bold;">RFC: '.$rfc_cliente.' </h5>
+    </div> 
+    <div style="width: 50%; float: right;">
+        <h6 class="text-right" style="padding: 0px; margin: 0px;">Fecha de contrato: '.$fecha_contrato.'</h6>
+        <h6 class="text-right" style="padding: 0px; margin: 0px; margin-bottom: 12px;">Modo de pago: '.$modo_pago.'</h6>
+        <h2 class="text-right" style="padding: 0px; margin: 0px;">TOTAL $'.number_format($total,2,'.',',') .'</h2>
+        <h4 class="text-right" style="padding: 0px; margin: 0px;">'.$estado.'</h4>
+    </div>
 </div>
 
 <style type="text/css">
@@ -57,7 +69,7 @@ font: Arial bold 120% cursive;
 }
 h5 {
 color: #041303;
-font: Arial bold 100%;
+font: Arial 100%;
 }
 
 #tabla {
@@ -109,9 +121,9 @@ $thml.=' <tr>
 }
 $thml.='</tbody>
 </table>
-<h6 class="text-right">Subtotal:    $'.$subtotal.'</h6>
-<h6 class="text-right">Comisión:     '.$comision.'%</h6>
-<h6 class="text-right">Total:       $'.$total.'</h6>';
+<h6 class="text-right" style="padding: 0px;">Subtotal:    $'.$subtotal.'</h6>
+<h6 class="text-right" style="padding: 0px;">Comisión:     '.$comision.'%</h6>
+<h6 class="text-right" style="font-size: 13px; font-weight: bold;">Total:       $'.number_format($total,2,',','.').'</h6>';
 
 
 $mpdf=new \Mpdf\Mpdf();

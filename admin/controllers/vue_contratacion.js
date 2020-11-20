@@ -66,24 +66,46 @@ var app = new Vue({
   methods: {
     listar_contrataciones: function () {
       axios.post(url, { opcion: 1 }).then((response) => {
+      if(response.data.length!=0){
         this.contrataciones = response.data;
-        this.restart();
+      }else{
+        Swal.fire({
+          title: "Información",
+          type: "success",
+          text: "¡No hay ninguna contratación!",
+          timer:1800
+        });
+        this.contrataciones = response.data;
+        this.subtotal=0;
+      }
+      this.restart();
       });
     },
     total_contrataciones: function () {
       axios.post(url, { opcion: 3 }).then((response) => {
+        if(response.data[0].subtotal!=null){
         this.subtotal = response.data[0].subtotal;
+        }else{
+        this.subtotal=0;
+        }
       });
     },
     btn_pagar: function(){
-      axios.post(url, {opcion:4,subtotal:this.subtotal}).then((response) => {
-
+      if(this.subtotal!=0){
+        axios.post(url, {opcion:4,subtotal:this.subtotal}).then((response) => {
         if(response.data.msj=='success'){
-        this.listar_contrataciones();
-         window.open("report_contrato.php","_blank");
-        }
-
-      });
+          this.listar_contrataciones();
+          window.open("report_contrato.php","_blank");
+          }
+        });
+      }else{
+        Swal.fire({
+          title: "Advertencia",
+          type: "warning",
+          text: "¡No hay ninguna contratación!",
+          timer:1400
+        });
+      }
     },
     btn_delete:function(id){    
         Swal.fire({

@@ -56,20 +56,23 @@
             </div>
             <form id="frm_add_account" role="form" class="php-email-form mt-4">
               <div class="form-row">
+                <span v-bind:class="usuario_clase">{{usuario_respuesta}}</span>
                 <div class="col-md-12 form-group">
-                  <input type="text" name="txt_user" class="form-control" id="user" v-model="usuario" placeholder="Nombre de usuario" />
+                  <input type="text" name="txt_user" class="form-control" id="user" v-model="usuario" placeholder="Nombre de usuario" @keyup="validate_user"/>
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-row">
+                 <span v-bind:class="correo_clase">{{correo_respuesta}}</span>
                 <div class="col-md-12 form-group">
-                  <input type="email" name="txt_email" class="form-control" id="email" v-model="correo" placeholder="Correo electrónico" />
+                  <input type="email" name="txt_email" class="form-control" id="email" v-model="correo" placeholder="Correo electrónico" @keyup="validate_email"/>
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-row">
+              <span v-bind:class="contrasena_clase">{{contrasena_respuesta}}</span>
                 <div class="col-md-12 form-group">
-                  <input type="password" name="txt_pswd" class="form-control" id="pswd" v-model="contrasena" placeholder="Contraseña" />
+                  <input type="password" name="txt_pswd" class="form-control" id="pswd" v-model="contrasena" placeholder="Contraseña" @keyup="validate_paswd"/>
                   <div class="validate"></div>
                 </div>
               </div>

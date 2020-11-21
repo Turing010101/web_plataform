@@ -8,6 +8,22 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.dato_invalido{
+    background-color: red;
+    padding: 0px 6px;
+    margin-bottom: 7px;
+    border-radius: 12px;
+    color: white;
+    font-size: 11px;
+}
+.dato_valido{
+  background-color: rgb(37, 197, 90);
+  padding: 0px 6px;
+  margin-bottom: 7px;
+  border-radius: 12px;
+  color: white;
+  font-size: 11px;
+}
 @media (max-width: 360px) {
   .logo > a{
     font-size: 12px;

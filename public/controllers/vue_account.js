@@ -5,7 +5,16 @@ var app = new Vue({
     message_crud:'success',
     usuario:'',
     correo:'',
-    contrasena:''
+    contrasena:'',
+    correo_respuesta:'',
+    correo_valido:'',
+    correo_clase:'',
+    usuario_respuesta:'',
+    usuario_valido:'',
+    usuario_clase:'',
+    contrasena_respuesta:'',
+    contrasena_valido:'',
+    contrasena_clase:''
   },
   methods: {
     //BOTTONS
@@ -13,7 +22,62 @@ var app = new Vue({
       if (this.not_empty('frm_add_account')) {
         this.message("warning","Advertencia","¡No dejar datos incompletos!",1700);
       }else {
-       this.insert();
+        if(this.correo_valido==true && this.usuario_valido==true && this.contrasena_valido==true){
+        this.insert();
+        }else{
+          this.message("warning","Advertencia","¡Datos invalidos!",1700);
+        }
+      }
+    },
+    validate_email: function(){
+      var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+      var valido = expReg.test(this.correo);
+      if(this.correo.length != 0){
+        if(valido!=true){
+            this.correo_clase="dato_invalido";
+            this.correo_respuesta= "Correo invalido";
+            this.correo_valido = false;           
+        }else{
+            this.correo_clase="dato_valido";
+            this.correo_respuesta= "Correo valido";
+            this.correo_valido = true;
+        }
+      }else{
+        this.correo_respuesta= "";
+      }
+    },
+    validate_user: function(){
+      var expReg= /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
+      var valido = expReg.test(this.usuario);
+      if(this.usuario.length != 0){
+        if(valido!=true){
+            this.usuario_clase="dato_invalido";
+            this.usuario_respuesta= "Usuario invalido";
+            this.usuario_valido = false;           
+        }else{
+            this.usuario_clase="dato_valido";
+            this.usuario_respuesta= "Usuario valido";
+            this.usuario_valido = true;
+        }
+      }else{
+        this.usuario_respuesta= "";
+      }
+    },
+    validate_paswd: function(){
+      var expReg= /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{10,20}$/;
+      var valido = expReg.test(this.contrasena);
+      if(this.contrasena.length != 0){
+        if(valido!=true){
+            this.contrasena_clase="dato_invalido";
+            this.contrasena_respuesta= "Contraseña debil";
+            this.contrasena_valido = false;           
+        }else{
+            this.contrasena_clase="dato_valido";
+            this.contrasena_respuesta= "Contraseña fuerte";
+            this.contrasena_valido = true;
+        }
+      }else{
+        this.contrasena_respuesta= "";
       }
     },
     //CRUD

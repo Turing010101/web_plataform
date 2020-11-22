@@ -35,7 +35,13 @@ switch($opcion){
         $consulta = "CALL sp_pay_contract_client('$id_cliente','$id_contrato','$subtotal');";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
-        $data = ($resultado->rowCount()==1) ? array("msj"=>"success") : array("msj"=>"error");
+
+        if($resultado->rowCount()==1){
+            $data =  array("msj"=>"success");
+            $_SESSION['id_contract']=0;
+        }else{
+            $data =  array("msj"=>"error");
+        }
         break;
 }
 print json_encode($data, JSON_UNESCAPED_UNICODE);

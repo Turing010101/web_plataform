@@ -1,1 +1,4 @@
 admin/views/vendor/
+admin/views/img/service/*
+admin/views/img/users/*
+admin/views/img/document/*

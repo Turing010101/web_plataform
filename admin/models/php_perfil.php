@@ -18,7 +18,7 @@ switch ($opcion) {
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
     break;
     case 2:
-        $consulta = "CALL sp_permisos_perfil_web('$tipo')";
+        $consulta = "CALL sp_permisos_perfil_web('$usuario','$contrasena','$tipo')";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

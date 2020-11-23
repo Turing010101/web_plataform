@@ -38,7 +38,8 @@ var app = new Vue({
     btn_clear:async function(){
       this.empty();
     },
-    btn_delete:function(obj){    
+    btn_delete:function(obj){
+      if(obj.estado=='Pendiente'){
         Swal.fire({
           title: "Eliminar registro",
           text: "¿Está seguro de borrar el registro: "+obj.clave+" ?",         
@@ -53,13 +54,24 @@ var app = new Vue({
           if (result.value) {            
             this.delete(obj);
           }
-        })                
+        })  
+      }else{
+        Swal.fire({
+          type: "warning",
+          title: "Advertencia",
+          text: "¡Ya no puede eliminat!",
+          timer:1700
+        });
+      }
     }, 
     //CRUD
     listar_registros: function () {
       var formData = new FormData();
       formData.append('opcion',4);
       axios.post(url,formData).then((response) => {
+        if(response.data.length==0){
+          document.getElementById("btn_open_frm").style.display = "inline";
+        }
         this.registros = response.data;
         this.restart();
       });
@@ -70,8 +82,7 @@ var app = new Vue({
       formData.append('clave_trabajador',this.id_trabajador);
       axios.post(url,formData).then((response) => {
         if(response.data.msj==this.message_crud){
-        this.message("success","Inserción","¡El registro ha sido guardado!",1400);
-        this.listar_registros();
+        location.reload();
         }else if(response.data.msj==this.message_img){
         this.message("error","Formato","¡Seleccionar una imagen apropiado!",1400);
         }
@@ -88,8 +99,7 @@ var app = new Vue({
 
       axios.post(url,formData).then((response) => {
       if(response.data.msj==this.message_crud){
-      this.message("success","Eliminación","¡El registro ha sido eliminado!",1400);
-      this.listar_registros();
+      location.reload();
       }
       this.empty();
       });

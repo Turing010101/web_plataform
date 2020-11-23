@@ -19,6 +19,7 @@
         </li>
         </li>
         <li id="contratacion" style="display:none" class="bold"><a href="table_contratacion.php" class="waves-effect waves-cyan"><i class="mdi-communication-quick-contacts-dialer"></i>Contrataciones</a></li>
+        <li id="contratos"    style="display:none" class="bold"><a href="table_contratos.php" class="waves-effect waves-cyan"><i class="mdi-action-assignment"></i>Contratos</a></li>
         <li id="documentos"  style="display:none" class="bold"><a href="table_document.php" class="waves-effect waves-cyan"><i class="mdi-file-folder"></i>Documentos</a></li>
         <li id="categorias" style="display:none" class="bold"><a href="table_category.php" class="waves-effect waves-cyan"><i class="mdi-av-recent-actors"></i>Categorías</a></li>
         <li id="servicios" style="display:none" class="bold"><a href="table_service.php" class="waves-effect waves-cyan"><i class="mdi-maps-local-grocery-store"></i>Servicios</a></li>

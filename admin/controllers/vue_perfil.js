@@ -35,6 +35,9 @@ var app = new Vue({
             case '24':    
               document.getElementById('imagenes').style.display = "inline";
               break;
+            case '25':    
+              document.getElementById('contratos').style.display = "inline";
+              break;
             default:
               break;
           }

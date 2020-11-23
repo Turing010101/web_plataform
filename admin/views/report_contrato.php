@@ -6,8 +6,8 @@ $objeto = new conexion();
 $conexion = $objeto->conectar();
 session_start();
 
-$id_cliente = $_SESSION['id_client'];
-$id_contrato = $_GET['id'];
+$id_cliente = $_GET['id_cliente'];
+$id_contrato = $_GET['id_contrato'];
 
 $sql = "CALL sp_read_contract_client('$id_cliente','$id_contrato');";
 $res = $conexion->prepare($sql);

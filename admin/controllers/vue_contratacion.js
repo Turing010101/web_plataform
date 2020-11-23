@@ -5,6 +5,7 @@ var app = new Vue({
     contrataciones: [],
     subtotal:0,
     id_contrato:0,
+    id_cliente:0,
     paises: [
       { value: "Afganistán", text: "Afganistán" },
       { value: "Albania", text: "Albania" },
@@ -70,6 +71,7 @@ var app = new Vue({
       if(response.data.length!=0){
         this.contrataciones = response.data;
         this.id_contrato =  response.data[0].id_contrato;
+        this.id_cliente =  response.data[0].id_cliente;
       }else{
         Swal.fire({
           title: "Información",
@@ -80,6 +82,7 @@ var app = new Vue({
         this.contrataciones = response.data;
         this.subtotal=0;
         this.id_contrato=0;
+        this.id_cliente=0;
       }
       this.restart();
       });
@@ -98,7 +101,7 @@ var app = new Vue({
         axios.post(url, {opcion:4,subtotal:this.subtotal}).then((response) => {
         if(response.data.msj=='success'){
           this.listar_contrataciones();
-          window.open("report_contrato.php?id="+this.id_contrato,"_blank");
+          window.open("report_contrato.php?id_contrato="+this.id_contrato+"&id_cliente="+this.id_cliente,"_blank");
           }
         });
       }else{

@@ -1,4 +1,6 @@
 admin/views/vendor/
 admin/views/img/service/*
+!admin/views/img/service/.gitkeep
 admin/views/img/users/*
 admin/views/img/document/*
+!admin/views/img/document/.gitkeep

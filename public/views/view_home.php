@@ -59,22 +59,22 @@
         <div class="row counters">
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">1232</span>
-            <p>Usuarios</p>
+            <span>{{total_contratantes}}</span>
+            <p>Contratantes</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">200</span>
+            <span>{{total_trabajadores}}</span>
             <p>Trabajadores</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">10</span>
+            <span>{{total_oficios}}</span>
             <p>Oficios</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">600</span>
+            <span>{{total_servicios}}</span>
             <p>Servicios</p>
           </div>
 
@@ -94,10 +94,13 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="assets/js/vue/vue.js"></script>
+  <script src="assets/js/vue/axios.js"></script>
+  <script src="../controllers/vue_home.js"></script>
+  
   <script src="assets/vendor/jquery/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
   <script src="assets/vendor/counterup/counterup.min.js"></script>
   <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>

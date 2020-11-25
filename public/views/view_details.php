@@ -70,9 +70,13 @@
               <p>{{categoria}}</p>
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Trabajador</h5>             
-              <p>{{trabajador}}</p>
               <img :src="'../../admin/views/img/users/'+img_trabajador" class="img-fluid" width="16%">
+              <h5>Trabajador</h5>
+              <p>{{trabajador}}</p>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Estado</h5>
+              <p>{{estado_trabajador}}</p>
             </div>
             <div class="text-center">
               <a @click="contratar" class="get-started-btn">Contratar</a>

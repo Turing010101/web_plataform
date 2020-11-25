@@ -49,14 +49,26 @@
       <div class="container" data-aos="fade-up">
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
-          <div v-for="(rows,i) of trabajadores" class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div v-for="(rows,i) of trabajadores" class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-            <a @click="select(rows)"><img :src="'../../admin/views/img/users/'+rows.img_trabajador" width="50%" class="img-fluid" alt=""></a>
+            <a @click="select(rows)"><img :src="'../../admin/views/img/users/'+rows.img_trabajador" class="img-fluid" alt=""></a>
               <div class="member-content">
-                <span>{{rows.trabajador}}</span>           
+                 <h4>{{rows.trabajador}}</h4>
+                <span>{{rows.estado_trabajador}}</span>
+                <p>
+                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                </p>
+                <div class="social">
+                  <a href=""><i class="icofont-twitter"></i></a>
+                  <a href=""><i class="icofont-facebook"></i></a>
+                  <a href=""><i class="icofont-instagram"></i></a>
+                  <a href=""><i class="icofont-linkedin"></i></a>
+                </div>           
               </div>
             </div>
           </div>
+
+
 
         </div>
       </div>

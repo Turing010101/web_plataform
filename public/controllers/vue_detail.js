@@ -10,7 +10,8 @@ var app = new Vue({
     trabajador: '',
     img_servicio:'',
     img_trabajador:'',
-    detalle:''
+    detalle:'',
+    estado_trabajador:''
   },
   methods: {
     mostrar_detalle: function () {
@@ -24,24 +25,38 @@ var app = new Vue({
         this.img_servicio = response.data[0].img_servicio;
         this.img_trabajador = response.data[0].img_trabajador;
         this.detalle = response.data[0].servicio_descripcion;
+        this.estado_trabajador= response.data[0].estado_trabajador;
       });
     },
     contratar:async function(){
-
-      axios.post(url, { opcion: 2, id_svc:this.id_servicio,id_price: this.precio }).then((response) => {
-        console.log(response.data);
-        if(response.data.msj=='true'){
-          Swal.fire({
-            title: "Añadido",
-            type: "success",
-            text: "¡El servicio ha sido guardado a tu contrato!",
-            timer:1700
-          });  
-        }else{
-         window.location.href="view_contact.php";  
-        }
-
-      });
+      if (this.estado_trabajador == "Disponible") {
+        axios
+          .post(url, {
+            opcion: 2,
+            id_svc: this.id_servicio,
+            id_price: this.precio,
+          })
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.msj == "true") {
+              Swal.fire({
+                title: "Añadido",
+                type: "success",
+                text: "¡El servicio ha sido guardado a tu contrato!",
+                timer: 1700,
+              });
+            } else {
+              window.location.href = "view_contact.php";
+            }
+          });
+      } else {
+        Swal.fire({
+          title: "Estado",
+          type: "success",
+          text: "¡El trabajador no se encuentra disponible!",
+          timer: 1700,
+        });
+      }
     },
     get_variable_url(variable) {
       let query = window.location.search.substring(1);

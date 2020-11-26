@@ -56,7 +56,7 @@
                  <h4>{{rows.trabajador}}</h4>
                 <span>{{rows.estado_trabajador}}</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                {{rows.experiencia_trabajador}}
                 </p>
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>

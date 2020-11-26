@@ -19,7 +19,7 @@ switch($opcion){
         $price_service = (isset($_POST['id_price'])) ? $_POST['id_price'] : '';
 
         if(isset($_SESSION['user'])){
-            
+            if($_SESSION['type']==3){
             $cliente = $_SESSION['id_client'];
             $tipo_pago = 3;
             $fecha = date("Y-m-d H:i:s");
@@ -56,6 +56,10 @@ switch($opcion){
     
             $data = array("msj" => "true");
             }
+        }else{
+            $data = array("msj" => "trj");
+        } 
+
         }else{
             $data = array("msj" => "false");
         }

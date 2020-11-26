@@ -37,7 +37,7 @@ var app = new Vue({
             id_price: this.precio,
           })
           .then((response) => {
-            console.log(response.data);
+            if(response.data.msj != "trj"){
             if (response.data.msj == "true") {
               Swal.fire({
                 title: "Añadido",
@@ -47,6 +47,14 @@ var app = new Vue({
               });
             } else {
               window.location.href = "view_contact.php";
+            }
+            }else{
+              Swal.fire({
+                title: "Cuenta",
+                type: "warning",
+                text: "¡Para contratar inicia sesión como contratante!",
+                timer: 1700,
+              });
             }
           });
       } else {

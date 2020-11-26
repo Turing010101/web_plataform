@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -181,31 +182,74 @@
               </div>
             </div>
           </div>
-          <!--end container-->
-          <div class="row">
-            <div class="col s12 m12 l12">
-              <div class="card-panel">
-                <div class="row">
-                  <form class="col s12">
-                    <h4 class="header2 center-align">TRABAJADOR</h4>
-                    <div class="center-align">
-                    <img src="./img/logotipo.png" height="100px" width="100px">
-                    </div>
+
+          <div id="ctn_trabjador" style="display:none">
+            <div class="container">
+              <!--Form Advance-->
+              <div class="row">
+                <div class="col s12 m12 l12">
+                  <div class="card-panel">
+                    <h4 class="header2">DATOS DEL TRABAJADOR</h4>
                     <div class="row">
-                      <div class="input-field col s12">
-                      <p class="center-align">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maxime possimus aliquid inventore fugiat vel, voluptates aspernatur labore. Ullam numquam odio omnis modi quibusdam, illo tempore dolor eius corrupti fugit!</p>
-                      </div>
-                      <div class="input-field col s12">
-                        <div class="input-field col s12 center-align">
-                          <button @click="btn_trabajador" class="btn cyan waves-effect waves-light" type="button"><i class="mdi-action-perm-identity"></i> Registrar</button>
+                      <form id="frm_trabajador" class="col s12">
+                        <div style="padding-left: 1px; margin-bottom: -15px;">
+                          <label>Estado del trabajador</label>
                         </div>
-                      </div>
+                        <div class="row">
+                          <div class="input-field col s4">
+                            <select class="browser-default" name="cmb_estado_trabajador" v-bind:value="estado_trabajador" id="slt_trabajador">
+                              <option value="X" disabled selected>Elegir</option>
+                              <option v-for="row in estados_trabajador" v-bind:disabled="row.disabled" v-bind:value="row.value">{{ row.text }}</option>
+                            </select>
+                          </div>
+                          <div class="input-field col s8">
+                            <input placeholder=".." type="text" name="txt_experiencia" v-model="experiencia">
+                            <label>Experiencia</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <button @click="btn_update_trabajador" class="btn cyan waves-effect waves-light right" type="button" name="action">GUARDAR
+                              <i class="mdi-content-send right"></i>
+                            </button>
+                          </div>
+                        </div>
                     </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!--end container-->
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <div class="card-panel">
+                  <div class="row">
+                    <form class="col s12">
+                      <h4 class="header2 center-align">TRABAJADOR</h4>
+                      <div class="center-align">
+                        <img src="./img/logotipo.png" height="100px" width="100px">
+                      </div>
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <p class="center-align">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maxime possimus aliquid inventore fugiat vel, voluptates aspernatur labore. Ullam numquam odio omnis modi quibusdam, illo tempore dolor eius corrupti fugit!</p>
+                        </div>
+                        <div class="input-field col s12">
+                          <div class="input-field col s12 center-align">
+                            <button @click="btn_trabajador" class="btn cyan waves-effect waves-light" type="button"><i class="mdi-action-perm-identity"></i> Registrar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </section>
       </div>
     </div>

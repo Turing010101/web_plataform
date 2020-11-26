@@ -133,6 +133,24 @@ switch ($opcion) {
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
+    case 7:
+        $rfc = (isset($_POST['rfc'])) ? $_POST['rfc'] : '';
+                    
+        $consulta = "CALL sp_read_datos_trabajador('$rfc')";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+        break;
+    case 8:  
+        $rfc = (isset($_POST['rfc'])) ? $_POST['rfc'] : '';
+        $estado = (isset($_POST['cmb_estado_trabajador'])) ? $_POST['cmb_estado_trabajador'] : '';
+        $experiencia = (isset($_POST['txt_experiencia'])) ? $_POST['txt_experiencia'] : '';
+
+        $consulta = "CALL sp_update_datos_trabajador('$rfc','$estado','$experiencia');";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+        $data = ($resultado->rowCount() == 1) ? array("msj" => "success") : array("msj" => "error");
+        break;
 }
 print json_encode($data, JSON_UNESCAPED_UNICODE);
 $conexion = NULL;

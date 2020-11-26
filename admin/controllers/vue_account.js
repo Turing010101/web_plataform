@@ -32,6 +32,15 @@ var app = new Vue({
     message_img: "errimg",
     state_trabajador: "",
     state_contratante: "",
+    estados_trabajador: [
+      { value: "Disponible", disabled: false, text: "Disponible" },
+      { value: "Ocupado", disabled: false, text: "Ocupado" },
+      { value: "Suspendido", disabled: true, text: "Suspendido" },
+      { value: "Solicitud", disabled: true, text: "Solicitud" },
+      { value: "Rechazado", disabled: true, text: "Rechazado" }
+    ],
+    estado_trabajador: "X",
+    experiencia:""
   },
   methods: {
     //BOTTONS
@@ -68,7 +77,38 @@ var app = new Vue({
       axios.post(url, formData).then((response) => {
         this.registros = response.data;
         this.setValues();
+        this.listar_trabajador(); 
+        this.habilitar_datos_trabajador();
       });
+    },
+    listar_trabajador: function () {
+      var formData = new FormData();
+      formData.append("opcion", 7);
+      formData.append("rfc", this.rfc);
+      axios.post(url, formData).then((response) => {
+        if(response.data.length!=0){
+        app.estado_trabajador = response.data[0]["vch_estado"];
+        app.experiencia = response.data[0]["vch_experiencia"];
+        }
+      });
+    },
+    habilitar_datos_trabajador: function(){
+      var formData = new FormData();
+      formData.append("opcion", 6);
+      formData.append("rfc", this.rfc);
+      axios.post(url, formData).then((response) => {
+        if(response.data[0]["res"]=="1") {
+          document.getElementById('ctn_trabjador').style.display = "inline";
+          this.habilitar_select();
+        }
+      });
+    },
+    habilitar_select: function(){
+      if (this.estado_trabajador == "Disponible" || this.estado_trabajador == "Ocupado") {
+        document.getElementById("slt_trabajador").disabled = false;
+      }else{
+        document.getElementById("slt_trabajador").disabled = true;
+      }
     },
     buscar_contratante: function () {
       var formData = new FormData();
@@ -130,6 +170,29 @@ var app = new Vue({
           );
         }
       });
+    },
+    btn_update_trabajador: function () {
+      var formData = new FormData(document.getElementById("frm_trabajador"));
+      formData.append("opcion", 8);
+      formData.append("rfc", this.rfc);
+      if (
+        this.estado_trabajador == "Disponible" ||
+        this.estado_trabajador == "Ocupado"
+      ) {
+        axios.post(url, formData).then((response) => {
+          if (response.data.msj == this.message_crud) {
+            this.message(
+              "success",
+              "Actualización",
+              "¡Los datos han sido actualizados!",
+              1700
+            );
+            this.listar_trabajador();
+          }
+        });
+      } else {
+        this.message("error", "Trabajador", "¡No tiene permiso, verifica su estado!", 1700);
+      }
     },
     contratador: function () {
       if (this.buscar_contratante()) {

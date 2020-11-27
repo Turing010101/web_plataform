@@ -53,13 +53,15 @@
               <img :src="'../../admin/views/img/service/'+rows.img_servicio" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4>{{rows.categoria}}</h4>
                   <p class="price">$ {{rows.servicio_costo}}</p>
                 </div>
                 <h3><a @click="select(rows)">{{rows.servicio_nombre}}</a></h3>
+                <p>Trabajador: {{rows.nombre_trabajador}}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img :src="'../../admin/views/img/users/'+rows.img_trabajador" class="img-fluid" alt="">
-                    <span>{{rows.nombre_trabajador}}</span>
+                    <span>{{rows.estado_trabajador}}</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
                     <i class="bx bx-user"></i>&nbsp;50

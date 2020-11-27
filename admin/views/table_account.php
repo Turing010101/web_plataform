@@ -208,8 +208,20 @@
                           </div>
                         </div>
                         <div class="row">
+                          <div class="input-field col s8">
+                            <blockquote>
+                              <strong>Significado de estados:</strong>
+                              <br><strong>Disponible:</strong> <i>El trabajador esta en disposición de realizar la contratación.</i>
+                              <br><strong>Ocupado: </strong> <i>El trabajador no esta disponible.</i>
+                              <br><strong>Suspendido:</strong> <i>EL trabajador no ha pagado la suscripción.</i>
+                              <br><strong>Solicitud: </strong> <i>El trabajador esta en el proceso de selección.</i>
+                              <br><strong>Rechazado: </strong> <i>EL trabajdor no aprobó las pruebas realizadas.</i>
+                            </blockquote>
+                          </div>
+                        </div>
+                        <div class="row">
                           <div class="input-field col s12">
-                            <button @click="btn_update_trabajador" class="btn cyan waves-effect waves-light right" type="button" name="action">GUARDAR
+                            <button @click="btn_update_trabajador" class="btn cyan waves-effect waves-light right" type="button" name="action" style="margin-top: -64px;">GUARDAR
                               <i class="mdi-content-send right"></i>
                             </button>
                           </div>
@@ -233,10 +245,64 @@
                       <div class="center-align">
                         <img src="./img/logotipo.png" height="100px" width="100px">
                       </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <p class="center-align">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus maxime possimus aliquid inventore fugiat vel, voluptates aspernatur labore. Ullam numquam odio omnis modi quibusdam, illo tempore dolor eius corrupti fugit!</p>
+
+                      <div id="card-stats">
+                        <div class="row">
+                        <div  style="padding-bottom: 15px;" class="input-field col s12">
+                          <p class="center-align"><h6>Para postularse como trabajador en la plataforma, debe seguir las siguientes instrucciones que serán gestionadas por la administración:</h6></p>
                         </div>
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content blue white-text">
+                                        <h4 class="card-stats-number">1</h4>
+                                        <p class="card-stats-compare center-align"><i></i>Subir los requrimientos solicitados <br>(Apartado Documentos)</p>
+                                        </p>
+                                    </div>
+                                    <div class="card-action blue darken-2">
+                                        <div id="clients-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content purple white-text">
+                                        <h4 class="card-stats-number">2</h4>
+                                        <p class="card-stats-compare center-align"><i></i>Seleccionar las categorias a pertenecer <br>(Apartado Categorias)</p>
+                                        </p>
+                                    </div>
+                                    <div class="card-action purple darken-2">
+                                        <div id="sales-compositebar"></div>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content blue-grey white-text">
+                                        <h4 class="card-stats-number">3</h4>
+                                        <p class="card-stats-compare center-align"><i></i>Verificar las observaciones de los requerimientos <br>(Apartado Documentos)</p>
+                                        </p>
+                                    </div>
+                                    <div class="card-action blue-grey darken-2">
+                                        <div id="profit-tristate"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content deep-purple white-text">
+                                        <h4 class="card-stats-number">4</h4>
+                                        <p class="card-stats-compare center-align"><i></i>Acudir a la sucursal en la fecha de evaluación <br>(Apartado Documentos)</p>
+                                        </p>
+                                    </div>
+                                    <div class="card-action  deep-purple darken-2">
+                                        <div id="invoice-line"></div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+
+                      <div class="row">
                         <div class="input-field col s12">
                           <div class="input-field col s12 center-align">
                             <button @click="btn_trabajador" class="btn cyan waves-effect waves-light" type="button"><i class="mdi-action-perm-identity"></i> Registrar</button>

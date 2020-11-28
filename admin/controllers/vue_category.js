@@ -1,4 +1,5 @@
 var url = "../models/category.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#content",
   data: {
@@ -23,12 +24,16 @@ var app = new Vue({
     },
     btn_insert: async function () {
       if (this.cmb_categoria == 0 || this.cmb_estado != 'Solicitud') {
+        contentLoad.style.visibility = 'visible';
+        setTimeout(() =>{
           Swal.fire({
             type: "warning",
             title: "Advertencia",
             text: "¡No dejar datos incompletos!",
             timer:1700
           });
+          contentLoad.style.visibility = 'hidden';
+        }, 1700);
       } else {
         this.insert();
       }
@@ -102,15 +107,21 @@ var app = new Vue({
       });
     },
     insert: function () {
+      contentLoad.style.visibility = 'visible';
       axios.post(url, {opcion:1,clave_trabajador:this.id_trabajador,clave_categoria:this.cmb_categoria,opc_estado:this.cmb_estado}).then((response) => {
         if(response.data.msj=='success'){
+        setTimeout(() =>{
           Swal.fire({
             title: "Inserción",
             type: "success",
             text: "¡El registro ha sido guardado!",
             timer:1400
           });
-        this.listar_registros();
+           this.listar_registros();
+           contentLoad.style.visibility = 'hidden';
+          }, 1400);
+        }else{
+          contentLoad.style.visibility = 'hidden';
         }
       this.empty();
       });

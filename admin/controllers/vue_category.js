@@ -24,16 +24,12 @@ var app = new Vue({
     },
     btn_insert: async function () {
       if (this.cmb_categoria == 0 || this.cmb_estado != 'Solicitud') {
-        contentLoad.style.visibility = 'visible';
-        setTimeout(() =>{
           Swal.fire({
             type: "warning",
             title: "Advertencia",
             text: "¡No dejar datos incompletos!",
             timer:1700
           });
-          contentLoad.style.visibility = 'hidden';
-        }, 1700);
       } else {
         this.insert();
       }
@@ -69,7 +65,7 @@ var app = new Vue({
       }
     },
     btn_delete:function(row){   
-      if(row.estado=='Solicitud'){ 
+      if(row.estado=='Solicitud'){
         Swal.fire({
           title: "Eliminar registro",
           text: "¿Está seguro de borrar el registro: "+row.clave+" ?",         
@@ -84,7 +80,7 @@ var app = new Vue({
           if (result.value) {            
             this.delete(row.clave);
           }
-        })         
+        })
       }else{
         Swal.fire({
           type: "warning",
@@ -92,7 +88,7 @@ var app = new Vue({
           text: "¡Ya no puede eliminar!",
           timer:1700
         });
-      }       
+      }
     }, 
     //CRUD
     listar_registros: function () {
@@ -127,8 +123,10 @@ var app = new Vue({
       });
     },
     update: function () {
+      contentLoad.style.visibility = 'visible';
       axios.post(url, {opcion:2,id:this.id_registro,clave_trabajador:this.id_trabajador,clave_categoria:this.cmb_categoria,opc_estado:this.cmb_estado}).then((response) => {
         if(response.data.msj=='success'){
+          setTimeout(() =>{
           Swal.fire({
             title: "Actualización",
             type: "success",
@@ -136,13 +134,19 @@ var app = new Vue({
             timer:1400
           });
           this.listar_registros();
+          contentLoad.style.visibility = 'hidden';
+        }, 1400);
+        }else{
+          contentLoad.style.visibility = 'hidden';
         }
       this.empty();
       });
     },
     delete: function (id) {
+      contentLoad.style.visibility = 'visible';
       axios.post(url, { opcion: 3, id: id }).then((response) => {
       if(response.data.msj=='success'){
+      setTimeout(() =>{
         Swal.fire({
           title: "Eliminación",
           type: "success",
@@ -150,6 +154,10 @@ var app = new Vue({
           timer:1400
         });
         this.listar_registros();
+        contentLoad.style.visibility = 'hidden';
+      }, 1400);
+      }else{
+        contentLoad.style.visibility = 'hidden';
       }
       this.empty();
       });

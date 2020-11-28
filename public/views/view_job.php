@@ -52,7 +52,7 @@
           <div v-for="(rows,i) of categorias" class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i v-bind:class="rows.icono"  v-bind:style="{color:rows.color}"></i>
-              <h3><a @click="select(rows)">{{rows.nombre}}</a></h3>
+              <h3><a style="cursor: pointer;" @click="select(rows)">{{rows.nombre}}</a></h3>
             </div>
           </div>
 

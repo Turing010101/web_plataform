@@ -56,7 +56,7 @@
                   <h4>{{rows.categoria}}</h4>
                   <p class="price">$ {{rows.servicio_costo}}</p>
                 </div>
-                <h3><a @click="select(rows)">{{rows.servicio_nombre}}</a></h3>
+                <h3><a style="cursor: pointer;" @click="select(rows)">{{rows.servicio_nombre}}</a></h3>
                 <p>Trabajador: {{rows.nombre_trabajador}}</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">

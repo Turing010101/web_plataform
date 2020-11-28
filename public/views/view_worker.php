@@ -51,7 +51,7 @@
 
           <div v-for="(rows,i) of trabajadores" class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-            <a @click="select(rows)"><img :src="'../../admin/views/img/users/'+rows.img_trabajador" class="img-fluid" alt=""></a>
+            <a style="cursor: pointer;" @click="select(rows)"><img :src="'../../admin/views/img/users/'+rows.img_trabajador" class="img-fluid" alt=""></a>
               <div class="member-content">
                  <h4>{{rows.trabajador}}</h4>
                 <span>{{rows.estado_trabajador}}</span>

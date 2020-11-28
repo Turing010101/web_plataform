@@ -79,7 +79,7 @@
               <p>{{estado_trabajador}}</p>
             </div>
             <div class="text-center">
-              <a @click="contratar" class="get-started-btn">Contratar</a>
+              <a style="cursor: pointer;" @click="contratar" class="get-started-btn">Contratar</a>
             </div>
         </div>
 

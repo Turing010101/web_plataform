@@ -1,4 +1,5 @@
 var url = "../models/php_account.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -156,18 +157,25 @@ var app = new Vue({
       formData.append("nom_img", this.nombre_img);
       formData.append("clave_usuario", this.id_registro);
 
+      contentLoad.style.visibility = 'visible';
       axios.post(url, formData).then((response) => {
         if (response.data.msj == this.message_crud) {
+          setTimeout(() =>{
           window.location.href = "table_account.php?email=" + app.email;
           this.clear();
           this.listar_registros();
+          contentLoad.style.visibility = 'hidden';
+        }, 1400);
         } else if (response.data.msj == this.message_img) {
+          setTimeout(() =>{
           this.message(
             "error",
             "Formato",
             "¡Seleccionar una imagen apropiado!",
             1400
           );
+        contentLoad.style.visibility = 'hidden';
+        }, 1400);
         }
       });
     },
@@ -218,7 +226,6 @@ var app = new Vue({
             var formData = new FormData();
             formData.append("opcion", 3);
             formData.append("rfc", this.rfc);
-    
             axios.post(url, formData).then((response) => {
               if (response.data.msj == this.message_crud) {
                 this.message(
@@ -264,7 +271,6 @@ var app = new Vue({
             var formData = new FormData();
             formData.append("opcion", 4);
             formData.append("rfc", this.rfc);
-    
             axios.post(url, formData).then((response) => {
               if (response.data.msj == this.message_crud) {
                 window.location.href = "table_account.php?email=" + app.email;
@@ -276,7 +282,7 @@ var app = new Vue({
                   2000
                 );
               }
-            });        
+            }); 
           }
         })      
       }

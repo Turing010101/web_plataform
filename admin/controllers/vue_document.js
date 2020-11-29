@@ -1,4 +1,5 @@
 var url = "../models/document.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -80,11 +81,15 @@ var app = new Vue({
       var formData = new FormData(document.getElementById('frm_add_document'));
       formData.append('opcion',1);
       formData.append('clave_trabajador',this.id_trabajador);
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
         if(response.data.msj==this.message_crud){
         location.reload();
         }else if(response.data.msj==this.message_img){
+        setTimeout(() =>{
         this.message("error","Formato","¡Seleccionar una imagen apropiado!",1400);
+        contentLoad.style.visibility = 'hidden';
+        }, 1400);
         }
       this.empty();
       });
@@ -96,10 +101,12 @@ var app = new Vue({
       formData.append('img_credencial',obj.credencial);
       formData.append('img_certificado',obj.certificado);
       formData.append('img_comprobante',obj.comprobante_domicilio);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
       if(response.data.msj==this.message_crud){
       location.reload();
+      }else{
+        contentLoad.style.visibility = 'hidden';
       }
       this.empty();
       });

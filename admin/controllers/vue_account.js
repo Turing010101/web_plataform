@@ -317,7 +317,7 @@ var app = new Vue({
       || formData.get("txt_ap_materno")=="" || formData.get("cmb_sexo")==null || formData.get("txt_tel_personal")==""
       || formData.get("txt_tel_conocido")=="" || formData.get("txt_localidad")=="" || formData.get("txt_nombre_calle")==""
       || formData.get("txt_numero_calle")=="" || formData.get("txt_municipio")=="" || formData.get("txt_estado")==""
-      || formData.get("txt_cp")=="" || formData.get("txt_email")=="" || formData.get("txt_usuario")=="" || formData.get("txt_pswd")=="") 
+      || formData.get("txt_cp")=="" || formData.get("txt_email")=="" || formData.get("txt_usuario")=="") 
       {
         return true;
       } else {

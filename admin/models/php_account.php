@@ -27,12 +27,11 @@ switch ($opcion) {
         $cp = (isset($_POST['txt_cp'])) ? $_POST['txt_cp'] : '';
         $email = (isset($_POST['txt_email'])) ? $_POST['txt_email'] : '';
         $usuario = (isset($_POST['txt_usuario'])) ? $_POST['txt_usuario'] : '';
-        $pswd = (isset($_POST['txt_pswd'])) ? $_POST['txt_pswd'] : '';
 
         $filename_user = $_FILES["img_usuario"]["name"];
 
         if($filename_user==""){
-            $consulta = "CALL sp_update_new_user_without_img('$id_user','$rfc','$rfc_before','$nombre','$ap_paterno','$ap_materno','$sexo','$tel_personal','$tel_conocido','$email','$localidad','$nombre_calle','$numero_calle','$municipio','$estado','$cp','$usuario','$pswd');";
+            $consulta = "CALL sp_update_new_user_without_img('$id_user','$rfc','$rfc_before','$nombre','$ap_paterno','$ap_materno','$sexo','$tel_personal','$tel_conocido','$email','$localidad','$nombre_calle','$numero_calle','$municipio','$estado','$cp','$usuario');";
             $resultado = $conexion->prepare($consulta);
             $resultado->execute();
             $resultado->closeCursor();
@@ -49,7 +48,7 @@ switch ($opcion) {
                 $name_img_usuario=  $id_user.'_usuario.' .$extension_user;
                 $ruta_usuario = '../views/img/users/'  .$name_img_usuario;
                
-                $consulta = "CALL sp_update_new_user_with_img('$id_user','$rfc','$rfc_before','$name_img_usuario','$nombre','$ap_paterno','$ap_materno','$sexo','$tel_personal','$tel_conocido','$email','$localidad','$nombre_calle','$numero_calle','$municipio','$estado','$cp','$usuario','$pswd');";
+                $consulta = "CALL sp_update_new_user_with_img('$id_user','$rfc','$rfc_before','$name_img_usuario','$nombre','$ap_paterno','$ap_materno','$sexo','$tel_personal','$tel_conocido','$email','$localidad','$nombre_calle','$numero_calle','$municipio','$estado','$cp','$usuario');";
                 $resultado = $conexion->prepare($consulta);
                 $resultado->execute();
                 $resultado->closeCursor();

@@ -24,7 +24,7 @@
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/js/sweetalert/css/sweetalert2.min.css" rel="stylesheet" >
+  <link href="assets/js/sweetalert/css/sweetalert2.min.css" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
@@ -32,16 +32,18 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <?php include('view_header.php')?>
+  <?php include('view_header.php') ?>
   <!-- End Header -->
-
+  <div class="load_icon" class="justify-content-center">
+    <img src="./assets/img/loading.gif" alt="">
+  </div>
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" style="margin-top: 89px;" data-aos="fade-in">
       <div class="container">
         <h2>Servicio detalle</h2>
-       </div>
+      </div>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Cource Details Section ======= -->
@@ -53,7 +55,7 @@
             <img :src="'../../admin/views/img/service/'+img_servicio" class="img-fluid" alt="">
             <h3>Descripción</h3>
             <p>
-            {{detalle}}
+              {{detalle}}
             </p>
           </div>
           <div class="col-lg-6">
@@ -81,15 +83,15 @@
             <div class="text-center">
               <a style="cursor: pointer;" @click="contratar" class="get-started-btn">Contratar</a>
             </div>
-        </div>
+          </div>
 
-      </div>
+        </div>
     </section>
     <!-- End Cource Details Section -->
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php include('view_footer.php')?>
+  <?php include('view_footer.php') ?>
   <!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>

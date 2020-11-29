@@ -1,4 +1,5 @@
 var url = "../models/php_detail.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -30,6 +31,7 @@ var app = new Vue({
     },
     contratar:async function(){
       if (this.estado_trabajador == "Disponible") {
+        contentLoad.style.visibility = 'visible';
         axios
           .post(url, {
             opcion: 2,
@@ -39,22 +41,28 @@ var app = new Vue({
           .then((response) => {
             if(response.data.msj != "trj"){
             if (response.data.msj == "true") {
+            setTimeout(() =>{
               Swal.fire({
                 title: "Añadido",
                 type: "success",
                 text: "¡El servicio ha sido guardado a tu contrato!",
                 timer: 1700,
               });
+              contentLoad.style.visibility = 'hidden';
+            }, 1400);
             } else {
               window.location.href = "view_contact.php";
             }
             }else{
+            setTimeout(() =>{
               Swal.fire({
                 title: "Cuenta",
                 type: "warning",
                 text: "¡Para contratar inicia sesión como contratante!",
                 timer: 1700,
               });
+              contentLoad.style.visibility = 'hidden';
+            }, 1400);
             }
           });
       } else {

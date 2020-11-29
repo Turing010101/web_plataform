@@ -46,6 +46,9 @@
     <div class="loader-section section-right"></div>
   </div>
   <!-- End Page Loading -->
+  <div class="load_icon" class="justify-content-center">
+    <img src="img/loading.gif" alt="">
+  </div>
   <main id="content">
     <!-- START HEADER -->
     <header id="header" class="page-topbar">

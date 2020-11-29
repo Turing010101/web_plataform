@@ -1,4 +1,5 @@
 var url = "../models/php_contratacion.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -102,7 +103,7 @@ var app = new Vue({
         if(response.data.msj=='success'){
           this.listar_contrataciones();
           window.open("report_contrato.php?id_contrato="+this.id_contrato+"&id_cliente="+this.id_cliente,"_blank");
-          }
+        }
         });
       }else{
         Swal.fire({
@@ -131,8 +132,10 @@ var app = new Vue({
         })                
     }, 
     delete: function (id) {
+        contentLoad.style.visibility = 'visible';
         axios.post(url, { opcion: 2, id: id }).then((response) => {
         if(response.data.msj=='success'){
+          setTimeout(() =>{
           Swal.fire({
             title: "Eliminación",
             type: "success",
@@ -141,6 +144,10 @@ var app = new Vue({
           });
           this.listar_contrataciones();
           this.total_contrataciones();
+          contentLoad.style.visibility = 'hidden';
+        }, 1400);
+        }else{
+          contentLoad.style.visibility = 'hidden';
         }
         });
     },

@@ -19,7 +19,7 @@
     top: 0;
     left: 0;
     background: rgb(0 0 0 / 67%);
-    position: absolute;
+    position: fixed;
     z-index: 1000;
     display: flex;
     visibility: hidden;

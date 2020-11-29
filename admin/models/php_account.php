@@ -27,7 +27,7 @@ switch ($opcion) {
         $cp = (isset($_POST['txt_cp'])) ? $_POST['txt_cp'] : '';
         $email = (isset($_POST['txt_email'])) ? $_POST['txt_email'] : '';
         $usuario = (isset($_POST['txt_usuario'])) ? $_POST['txt_usuario'] : '';
-
+        $_SESSION['user']= $usuario;
         $filename_user = $_FILES["img_usuario"]["name"];
 
         if($filename_user==""){

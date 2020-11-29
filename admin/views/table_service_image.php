@@ -47,6 +47,9 @@
     <div class="loader-section section-right"></div>
   </div>
   <!-- End Page Loading -->
+  <div class="load_icon" class="justify-content-center">
+    <img src="img/loading.gif" alt="">
+  </div>
   <main id="content">
     <!-- START HEADER -->
     <header id="header" class="page-topbar">
@@ -99,9 +102,9 @@
                         <div class="row">
                           <div class="col s12 m8 l9">
                             <div class="file-field input-field">
-                              <input class="file-path validate" type="text" v-model="nombre_img"/>
+                              <input class="file-path validate" type="text" v-model="nombre_img" />
                               <div class="btn mdi-action-search">
-                                <input type="file" name="img_servicio" @change="btn_change_servicio"/>
+                                <input type="file" name="img_servicio" @change="btn_change_servicio" />
                               </div>
                             </div>
                           </div>

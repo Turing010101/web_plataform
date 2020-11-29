@@ -1,5 +1,6 @@
 var popup_service;
 var url = "../models/php_service_image.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -65,12 +66,19 @@ var app = new Vue({
       var formData = new FormData(document.getElementById('frm_add_service_image'));
       formData.append('opcion',1);
       formData.append('clave_servicio',this.id_servicio);
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
         if(response.data.msj==this.message_crud){
+        setTimeout(() =>{
         this.message("success","Inserción","¡El registro ha sido guardado!",1400);
         this.listar_registros();
+        contentLoad.style.visibility = 'hidden';
+        }, 1400);
         }else if(response.data.msj==this.message_img){
+        setTimeout(() =>{
         this.message("error","Formato","¡Seleccionar una imagen apropiado!",1400);
+        contentLoad.style.visibility = 'hidden';
+        }, 1400);
         }
       this.empty();
       });
@@ -80,11 +88,16 @@ var app = new Vue({
       formData.append('opcion',3);
       formData.append('id_registro',obj.id_clave_servicio_imagen);
       formData.append('img_servicio',obj.img_servicio);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
       if(response.data.msj==this.message_crud){
-      this.message("success","Eliminación","¡El registro ha sido eliminado!",1400);
-      this.listar_registros();
+        setTimeout(() =>{
+        this.message("success","Eliminación","¡El registro ha sido eliminado!",1400);
+        this.listar_registros();
+        contentLoad.style.visibility = 'hidden';
+      }, 1400);
+      }else{
+        contentLoad.style.visibility = 'hidden';
       }
       this.empty();
       });

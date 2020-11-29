@@ -24,7 +24,7 @@
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/js/sweetalert/css/sweetalert2.min.css" rel="stylesheet" >
+  <link href="assets/js/sweetalert/css/sweetalert2.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -35,7 +35,9 @@
   <!-- ======= Header ======= -->
   <?php include('view_header.php') ?>
   <!-- End Header -->
-
+  <div class="load_icon" class="justify-content-center">
+    <img src="./assets/img/loading.gif" alt="">
+  </div>
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->

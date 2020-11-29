@@ -1,4 +1,5 @@
 var url = "../models/php_login.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -20,12 +21,15 @@ var app = new Vue({
     insert: function () {
       var formData = new FormData(document.getElementById('frm_login'));
       formData.append('opcion',1);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
         if(this.msg==response.data[0]["res"]){
         window.location.href="../../admin/views/table_account.php?email="+response.data[0]["email"];    
         }else{
+          setTimeout(() =>{
           this.message("warning","Advertencia","¡Verfica las credenciales de acceso!",1700);
+          contentLoad.style.visibility = 'hidden';
+          }, 1400);
         }
       });
     },

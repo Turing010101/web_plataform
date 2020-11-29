@@ -34,7 +34,9 @@
   <!-- ======= Header ======= -->
   <?php include('view_header.php') ?>
   <!-- End Header -->
-
+  <div class="load_icon" class="justify-content-center">
+    <img src="./assets/img/loading.gif" alt="">
+  </div>
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->

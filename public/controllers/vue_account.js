@@ -1,4 +1,5 @@
 var url = "../models/php_account.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -84,11 +85,12 @@ var app = new Vue({
     insert: function () {
       var formData = new FormData(document.getElementById('frm_add_account'));
       formData.append('opcion',1);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
-
         if(response.data.msj==this.message_crud){
         window.location.href="../../admin/views/table_account.php?email="+ app.correo;          
+        }else{
+          contentLoad.style.visibility = 'hidden';
         }
         this.empty();
       });

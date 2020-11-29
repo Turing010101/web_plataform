@@ -1,4 +1,5 @@
 var url = "../models/php_service.php";
+var contentLoad = document.querySelector('.load_icon');
 var app = new Vue({
   el: "#main",
   data: {
@@ -77,12 +78,17 @@ var app = new Vue({
     insert: function () {
       var formData = new FormData(document.getElementById('frm_add_service'));
       formData.append('opcion',1);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
-        if(response.data.msj==this.message_crud){
+      if(response.data.msj==this.message_crud){
+        setTimeout(() =>{
         this.message("success","Inserción","¡El registro ha sido guardado!",1400);
         this.listar_registros();
-        }
+        contentLoad.style.visibility = 'hidden';
+        }, 1400);
+      }else{
+        contentLoad.style.visibility = 'hidden';
+      }
       this.empty();
       });
     },
@@ -90,12 +96,17 @@ var app = new Vue({
       var formData = new FormData(document.getElementById('frm_udt_service'));
       formData.append('opcion',2);
       formData.append('clave_servicio',this.id_registro);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
         if(response.data.msj==this.message_crud){
+        setTimeout(() =>{
         this.message("success","Actualización","¡El registro ha sido actualizado!",1400);
         this.listar_registros();
-        }
+        contentLoad.style.visibility = 'hidden';
+        }, 1400);
+      }else{
+        contentLoad.style.visibility = 'hidden';
+      }
       this.empty();
       });
     },
@@ -103,11 +114,16 @@ var app = new Vue({
       var formData = new FormData();
       formData.append('opcion',3);
       formData.append('clave_servicio',id);
-
+      contentLoad.style.visibility = 'visible';
       axios.post(url,formData).then((response) => {
       if(response.data.msj==this.message_crud){
+      setTimeout(() =>{
       this.message("success","Eliminación","¡El registro ha sido eliminado!",1400);
       this.listar_registros();
+      contentLoad.style.visibility = 'hidden';
+      }, 1400);
+      }else{
+        contentLoad.style.visibility = 'hidden';
       }
       this.empty();
       });

@@ -168,7 +168,7 @@
                           <label>Usuario</label>
                         </div>
                         <div class="input-field col s3">
-                          <input placeholder=".." type="password" name="txt_pswd" v-model="pswd">
+                          <input placeholder=".." type="text" name="txt_pswd" v-model="pswd" disabled>
                           <label>Contraseña</label>
                         </div>
                       </div>

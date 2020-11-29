@@ -187,8 +187,10 @@ var app = new Vue({
         this.estado_trabajador == "Disponible" ||
         this.estado_trabajador == "Ocupado"
       ) {
+        contentLoad.style.visibility = 'visible';
         axios.post(url, formData).then((response) => {
           if (response.data.msj == this.message_crud) {
+            setTimeout(() =>{
             this.message(
               "success",
               "Actualización",
@@ -196,6 +198,10 @@ var app = new Vue({
               1700
             );
             this.listar_trabajador();
+            contentLoad.style.visibility = 'hidden';
+          }, 1400);
+          }else{
+            contentLoad.style.visibility = 'hidden';
           }
         });
       } else {
@@ -271,16 +277,20 @@ var app = new Vue({
             var formData = new FormData();
             formData.append("opcion", 4);
             formData.append("rfc", this.rfc);
+            contentLoad.style.visibility = 'visible';
             axios.post(url, formData).then((response) => {
               if (response.data.msj == this.message_crud) {
                 window.location.href = "table_account.php?email=" + app.email;
               } else if (response.data.msj == this.message_read) {
+              setTimeout(() =>{
                 this.message(
                   "success",
                   "Tipo de perfil",
                   "¡Ya cuenta con este perfil, puede iniciar sesión con ello!",
                   2000
                 );
+                contentLoad.style.visibility = 'hidden';
+              }, 1400);
               }
             }); 
           }

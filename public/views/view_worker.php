@@ -24,6 +24,7 @@
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/js/sweetalert/css/sweetalert2.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -86,6 +87,7 @@
   <!-- Vendor JS Files -->
   <script src="assets/js/vue/vue.js"></script>
   <script src="assets/js/vue/axios.js"></script>
+  <script src="assets/js/sweetalert/sweetalert2.all.min.js"></script>
   <script src="../controllers/vue_worker.js"></script>
 
   <script src="assets/vendor/jquery/jquery.min.js"></script>

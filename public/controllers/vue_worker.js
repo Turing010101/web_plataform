@@ -9,10 +9,18 @@ var app = new Vue({
   methods: {
     listar_trabajadores: function () {
       this.id_categoria = this.get_variable_url("cat");
-
       axios.post(url, { opcion: 1,id_cat: this.id_categoria }).then((response) => {
+      if(response.data.length!=0){
         this.trabajadores = response.data;
         this.categoria = (response.data[0].categoria).toLowerCase();
+      }else{
+        Swal.fire({
+          title: "Aviso",
+          type: "success",
+          text: "¡No hay trabajadores por el momento!",
+          timer:1800
+        });
+      }
       });
     },
     select:async function(rows){

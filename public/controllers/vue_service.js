@@ -13,8 +13,17 @@ var app = new Vue({
       this.id_trabajador = this.get_variable_url("trb");
 
       axios.post(url, { opcion: 1,id_cat: this.id_categoria, id_tbj: this.id_trabajador }).then((response) => {
+        if(response.data.length!=0){
         this.servicios = response.data;
         this.nombre_categoria = (response.data[0].categoria).toLowerCase();
+        }else{
+          Swal.fire({
+            title: "Aviso",
+            type: "success",
+            text: "¡No hay ningún servicio por el momento!",
+            timer:1800
+          });
+        }
       });
     },
     select:async function(rows){

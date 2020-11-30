@@ -88,12 +88,12 @@
                   <div class="row">
                     <div class="input-field col s12">
                      <span v-bind:class="contrasena_actual_clase">{{contrasena_actual_respuesta}}</span>
-                      <input placeholder="..." class="validate" type="text" name="txt_contrasena_actual" v-model="contrasena_actual" maxlength="30" length="30" @keyup="validate_paswd_actual">
+                      <input placeholder="..." class="validate" type="password" name="txt_contrasena_actual" v-model="contrasena_actual" maxlength="30" length="30" @keyup="validate_paswd_actual">
                       <label>Contraseña actual</label>
                     </div>
                     <div class="input-field col s12">
                      <span v-bind:class="contrasena_nueva_clase">{{contrasena_nueva_respuesta}}</span>
-                      <input placeholder="..." class="validate" type="text" name="txt_contrasena_nueva" v-model="contrasena_nueva" maxlength="30" length="30" @keyup="validate_paswd_nueva">
+                      <input placeholder="..." class="validate" type="password" name="txt_contrasena_nueva" v-model="contrasena_nueva" maxlength="30" length="30" @keyup="validate_paswd_nueva">
                       <label>Contraseña nueva</label>
                     </div>
                   </div>

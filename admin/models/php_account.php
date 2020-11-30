@@ -150,6 +150,22 @@ switch ($opcion) {
         $resultado->execute();
         $data = ($resultado->rowCount() == 1) ? array("msj" => "success") : array("msj" => "error");
         break;
+    case 9:  
+        $rfc = (isset($_POST['rfc'])) ? $_POST['rfc'] : '';
+        $contrasena_actual = (isset($_POST['txt_contrasena_actual'])) ? $_POST['txt_contrasena_actual'] : '';
+        $contrasena_nueva = (isset($_POST['txt_contrasena_nueva'])) ? $_POST['txt_contrasena_nueva'] : '';
+
+        $consulta = "CALL sp_change_password('$rfc','$contrasena_actual','$contrasena_nueva');";
+        $resultado = $conexion->prepare($consulta);
+        $resultado->execute();
+
+        if($resultado->rowCount() == 1){
+            $data = array("msj" => "success");
+            $_SESSION['pswd']= $contrasena_nueva;
+        }else{
+            $data = array("msj" => "error");
+        }
+        break;
 }
 print json_encode($data, JSON_UNESCAPED_UNICODE);
 $conexion = NULL;

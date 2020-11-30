@@ -48,7 +48,7 @@
   </div>
   <!-- End Page Loading -->
   <div class="load_icon" class="justify-content-center">
-  <img src="img/loading.gif" alt="">
+    <img src="img/loading.gif" alt="">
   </div>
   <main id="content">
     <!-- START HEADER -->
@@ -59,6 +59,9 @@
           <div class="nav-wrapper">
             <h1 class="logo-wrapper"><a class="brand-logo darken-1"><img src="img/logo.png" alt="Trabajos.com"></a> <span class="logo-text">Trabajos.com</span></h1>
             <ul class="right hide-on-med-and-down">
+              <li><a href="#mdl_change" class="waves-effect waves-block waves-light modal-trigger">
+                  <i class="mdi-content-add-circle-outline"></i></a>
+              </li>
               <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
               </li>
             </ul>
@@ -77,6 +80,31 @@
         <!-- END LEFT SIDEBAR NAV-->
         <!-- START CONTENT -->
         <section>
+          <div class="section">
+            <!--Modal add_category -->
+            <div id="mdl_change" class="modal">
+              <div class="modal-content">
+                <form class="col s12" id="frm_change">
+                  <div class="row">
+                    <div class="input-field col s12">
+                     <span v-bind:class="contrasena_actual_clase">{{contrasena_actual_respuesta}}</span>
+                      <input placeholder="..." class="validate" type="text" name="txt_contrasena_actual" v-model="contrasena_actual" maxlength="30" length="30" @keyup="validate_paswd_actual">
+                      <label>Contraseña actual</label>
+                    </div>
+                    <div class="input-field col s12">
+                     <span v-bind:class="contrasena_nueva_clase">{{contrasena_nueva_respuesta}}</span>
+                      <input placeholder="..." class="validate" type="text" name="txt_contrasena_nueva" v-model="contrasena_nueva" maxlength="30" length="30" @keyup="validate_paswd_nueva">
+                      <label>Contraseña nueva</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a @click="btn_change" class="waves-effect waves-green btn-flat modal-action modal-close">Guardar</a>
+                <a class="waves-effect waves-red btn-flat modal-action modal-close">Cancelar</a>
+              </div>
+            </div>
+          </div>
           <!--start container-->
           <div class="container">
             <!--Form Advance-->
@@ -251,59 +279,61 @@
 
                       <div id="card-stats">
                         <div class="row">
-                        <div  style="padding-bottom: 15px;" class="input-field col s12">
-                          <p class="center-align"><h6>Para postularse como trabajador en la plataforma, debe seguir las siguientes instrucciones que serán gestionadas por la administración:</h6></p>
-                        </div>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content blue white-text">
-                                        <h4 class="card-stats-number">1</h4>
-                                        <p class="card-stats-compare center-align"><i></i>Subir los requrimientos solicitados <br>(Apartado Documentos)</p>
-                                        </p>
-                                    </div>
-                                    <div class="card-action blue darken-2">
-                                        <div id="clients-bar"></div>
-                                    </div>
-                                </div>
+                          <div style="padding-bottom: 15px;" class="input-field col s12">
+                            <p class="center-align">
+                              <h6>Para postularse como trabajador en la plataforma, debe seguir las siguientes instrucciones que serán gestionadas por la administración:</h6>
+                            </p>
+                          </div>
+                          <div class="col s12 m6 l3">
+                            <div class="card">
+                              <div class="card-content blue white-text">
+                                <h4 class="card-stats-number">1</h4>
+                                <p class="card-stats-compare center-align"><i></i>Subir los requrimientos solicitados <br>(Apartado Documentos)</p>
+                                </p>
+                              </div>
+                              <div class="card-action blue darken-2">
+                                <div id="clients-bar"></div>
+                              </div>
                             </div>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content purple white-text">
-                                        <h4 class="card-stats-number">2</h4>
-                                        <p class="card-stats-compare center-align"><i></i>Seleccionar las categorias a pertenecer <br>(Apartado Categorias)</p>
-                                        </p>
-                                    </div>
-                                    <div class="card-action purple darken-2">
-                                        <div id="sales-compositebar"></div>
-                                    </div>
-                                </div>
-                            </div>                            
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content blue-grey white-text">
-                                        <h4 class="card-stats-number">3</h4>
-                                        <p class="card-stats-compare center-align"><i></i>Verificar las observaciones de los requerimientos <br>(Apartado Documentos)</p>
-                                        </p>
-                                    </div>
-                                    <div class="card-action blue-grey darken-2">
-                                        <div id="profit-tristate"></div>
-                                    </div>
-                                </div>
+                          </div>
+                          <div class="col s12 m6 l3">
+                            <div class="card">
+                              <div class="card-content purple white-text">
+                                <h4 class="card-stats-number">2</h4>
+                                <p class="card-stats-compare center-align"><i></i>Seleccionar las categorias a pertenecer <br>(Apartado Categorias)</p>
+                                </p>
+                              </div>
+                              <div class="card-action purple darken-2">
+                                <div id="sales-compositebar"></div>
+                              </div>
                             </div>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content deep-purple white-text">
-                                        <h4 class="card-stats-number">4</h4>
-                                        <p class="card-stats-compare center-align"><i></i>Acudir a la sucursal en la fecha de evaluación <br>(Apartado Documentos)</p>
-                                        </p>
-                                    </div>
-                                    <div class="card-action  deep-purple darken-2">
-                                        <div id="invoice-line"></div>
-                                    </div>
-                                </div>
-                            </div>                            
+                          </div>
+                          <div class="col s12 m6 l3">
+                            <div class="card">
+                              <div class="card-content blue-grey white-text">
+                                <h4 class="card-stats-number">3</h4>
+                                <p class="card-stats-compare center-align"><i></i>Verificar las observaciones de los requerimientos <br>(Apartado Documentos)</p>
+                                </p>
+                              </div>
+                              <div class="card-action blue-grey darken-2">
+                                <div id="profit-tristate"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col s12 m6 l3">
+                            <div class="card">
+                              <div class="card-content deep-purple white-text">
+                                <h4 class="card-stats-number">4</h4>
+                                <p class="card-stats-compare center-align"><i></i>Acudir a la sucursal en la fecha de evaluación <br>(Apartado Documentos)</p>
+                                </p>
+                              </div>
+                              <div class="card-action  deep-purple darken-2">
+                                <div id="invoice-line"></div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                    </div>
+                      </div>
 
                       <div class="row">
                         <div class="input-field col s12">

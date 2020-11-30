@@ -28,6 +28,22 @@
     display: block; margin: auto;
     width: 210px;
   }
+  .dato_invalido{
+    background-color: red;
+    padding: 0px 6px;
+    margin-bottom: 7px;
+    border-radius: 12px;
+    color: white;
+    font-size: 11px;
+  }
+  .dato_valido{
+    background-color: rgb(37, 197, 90);
+    padding: 0px 6px;
+    margin-bottom: 7px;
+    border-radius: 12px;
+    color: white;
+    font-size: 11px;
+  }
   .render_img{
     width: 80px; 
     height: 90px; 

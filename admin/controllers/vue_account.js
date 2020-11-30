@@ -41,7 +41,15 @@ var app = new Vue({
       { value: "Rechazado", disabled: true, text: "Rechazado" }
     ],
     estado_trabajador: "X",
-    experiencia:""
+    experiencia:"",
+    contrasena_actual:"",
+    contrasena_nueva:"",
+    contrasena_actual_respuesta:'',
+    contrasena_actual_valido:'',
+    contrasena_actual_clase:'',
+    contrasena_nueva_respuesta:'',
+    contrasena_nueva_valido:'',
+    contrasena_nueva_clase:''
   },
   methods: {
     //BOTTONS
@@ -206,6 +214,80 @@ var app = new Vue({
         });
       } else {
         this.message("error", "Trabajador", "¡No tiene permiso, verifica su estado!", 1700);
+      }
+    },
+    btn_change: function () {
+      var formData = new FormData(document.getElementById("frm_change"));
+      formData.append("opcion", 9);
+      formData.append("rfc", this.rfc);
+
+      if (this.contrasena_actual != "" && this.contrasena_nueva != "") {
+        if(this.contrasena_actual_valido==true && this.contrasena_nueva_valido==true){
+        contentLoad.style.visibility = 'visible';
+        axios.post(url, formData).then((response) => {
+          if (response.data.msj == this.message_crud) {
+            window.location.href = "table_account.php?email=" + app.email;
+          }else{
+            setTimeout(() =>{
+              this.message(
+                "warning",
+                "Advertencia",
+                "¡Verifica a contraseña actual!",
+                1700
+              );
+              contentLoad.style.visibility = 'hidden';
+            }, 1400);
+          }
+        });
+        }else{
+          this.message(
+            "warning",
+            "Advertencia",
+            "¡Datos invalidos!",
+            1700
+          );
+        }
+      } else {
+        this.message(
+          "warning",
+          "Advertencia",
+          "¡No dejar datos incompletos!",
+          1700
+        );
+      }
+    },
+    validate_paswd_actual: function(){
+      var expReg= /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{10,20}$/;
+      var valido = expReg.test(this.contrasena_actual);
+      if(this.contrasena_actual.length != 0){
+        if(valido!=true){
+            this.contrasena_actual_clase="dato_invalido";
+            this.contrasena_actual_respuesta= "Contraseña debil";
+            this.contrasena_actual_valido = false;           
+        }else{
+            this.contrasena_actual_clase="dato_valido";
+            this.contrasena_actual_respuesta= "Contraseña fuerte";
+            this.contrasena_actual_valido = true;
+        }
+      }else{
+        this.contrasena_actual_respuesta= "";
+      }
+    },
+    validate_paswd_nueva: function(){
+      var expReg= /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{10,20}$/;
+      var valido = expReg.test(this.contrasena_nueva);
+      if(this.contrasena_nueva.length != 0){
+        if(valido!=true){
+            this.contrasena_nueva_clase="dato_invalido";
+            this.contrasena_nueva_respuesta= "Contraseña debil";
+            this.contrasena_nueva_valido = false;           
+        }else{
+            this.contrasena_nueva_clase="dato_valido";
+            this.contrasena_nueva_respuesta= "Contraseña fuerte";
+            this.contrasena_nueva_valido = true;
+        }
+      }else{
+        this.contrasena_nueva_respuesta= "";
       }
     },
     contratador: function () {

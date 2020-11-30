@@ -60,7 +60,7 @@
             <h1 class="logo-wrapper"><a class="brand-logo darken-1"><img src="img/logo.png" alt="Trabajos.com"></a> <span class="logo-text">Trabajos.com</span></h1>
             <ul class="right hide-on-med-and-down">
               <li><a href="#mdl_change" class="waves-effect waves-block waves-light modal-trigger">
-                  <i class="mdi-content-add-circle-outline"></i></a>
+                  <i class="mdi-hardware-security"></i></a>
               </li>
               <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
               </li>

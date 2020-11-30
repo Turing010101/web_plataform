@@ -82,7 +82,7 @@
         <section>
           <div class="section">
             <!--Modal add_category -->
-            <div id="mdl_change" class="modal">
+            <div id="mdl_change" class="modal" style="width: 30%;">
               <div class="modal-content">
                 <form class="col s12" id="frm_change">
                   <div class="row">
